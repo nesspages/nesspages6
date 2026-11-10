@@ -1,0 +1,905 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b7a4b">
+<title>NessPages UNNES | Sirkulasi Literatur Akademik Kampus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--g:#0b7a4b;--g2:#065f3b;--g3:#10b981;--mint:#ecfdf5;--mint2:#d1fae5;--ink:#0f172a;--mut:#64748b;--line:#e2e8f0;--bg:#f4f9f6;--card:#fff;--red:#e11d48;--amb:#b45309;--ambbg:#fef3c7;--r:16px;--sh:0 1px 2px rgba(15,23,42,.04),0 6px 20px rgba(15,23,42,.06)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+img{max-width:100%;display:block}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh)}
+.pad{padding:20px}
+.row{display:flex;align-items:center;gap:10px}.sb{justify-content:space-between}.wr{flex-wrap:wrap}
+.mut{color:var(--mut)}.sm{font-size:12px}.xs{font-size:11px}.b{font-weight:700}.xb{font-weight:800}
+.g{color:var(--g)}
+.ic{display:inline-block;vertical-align:-3px;flex:none}
+/* header */
+.hd{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.hd>div{max-width:1180px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:18px}
+.logo{display:flex;align-items:center;gap:10px;font-size:17px;color:var(--g2)}
+.lg{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#0b7a4b,#065f3b);color:#fff;display:grid;place-items:center;font-weight:800;font-size:13px;letter-spacing:-.5px}
+.hs{flex:1;max-width:420px;margin:0 auto;display:flex;align-items:center;gap:8px;background:#f1f5f9;border-radius:999px;padding:8px 14px;color:var(--mut)}
+.hs input{flex:1;background:none;border:0;outline:0;min-width:0}
+.hd nav{display:flex;gap:4px}
+.hd nav a{padding:8px 12px;border-radius:10px;font-weight:600;color:#334155;position:relative}
+.hd nav a:hover,.hd nav a.on{background:var(--mint);color:var(--g2)}
+.hd nav i{font-style:normal;background:var(--g);color:#fff;border-radius:99px;font-size:10px;padding:1px 6px;margin-left:5px}
+.usr{display:flex;align-items:center;gap:10px;text-align:right;line-height:1.2}
+.usr small{display:block;color:var(--g);font-size:11px;font-weight:600}
+.av{width:36px;height:36px;border-radius:50%;background:#e2e8f0;display:grid;place-items:center;font-style:normal;font-weight:700;color:#64748b}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 18px;border-radius:12px;font-weight:700;border:1.5px solid transparent;transition:.15s;white-space:nowrap}
+.bp{background:var(--g);color:#fff}.bp:hover{background:var(--g2)}
+.bo{border-color:var(--g);color:var(--g);background:#fff}.bo:hover{background:var(--mint)}
+.bg{background:#f1f5f9;color:#334155}.bg:hover{background:#e2e8f0}
+.bd{background:#1e293b;color:#fff}.bd:hover{background:#0f172a}
+.br{background:#fff;border-color:#fecdd3;color:var(--red)}.br:hover{background:#fff1f2}
+.btn.sm{padding:6px 12px;border-radius:9px;font-size:12px}
+.btn.full{width:100%}
+.btn[disabled]{opacity:.5;pointer-events:none}
+/* chips */
+.bdg{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:99px;font-size:11px;font-weight:700;background:#f1f5f9;color:#334155}
+.bgg{background:var(--mint2);color:var(--g2)}.bga{background:var(--ambbg);color:var(--amb)}.bgr{background:#ffe4e6;color:#be123c}.bgb{background:#dbeafe;color:#1d4ed8}
+/* forms */
+label.l{display:block;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#475569;margin-bottom:6px}
+.in,.sel,.ta{width:100%;padding:11px 13px;border:1.5px solid var(--line);border-radius:12px;background:#fff;outline:0;transition:.15s}
+.in:focus,.sel:focus,.ta:focus{border-color:var(--g3);box-shadow:0 0 0 3px rgba(16,185,129,.15)}
+.in[readonly]{background:#f8fafc;color:#475569}
+.ta{resize:vertical;min-height:90px}
+.err{color:var(--red);font-size:12px;margin-top:4px;min-height:0}
+.fg{display:grid;gap:14px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.sec-t{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:800;margin-bottom:16px}
+.sec-t:before{content:'';width:4px;height:20px;border-radius:4px;background:var(--g)}
+/* hero */
+.hero{background:radial-gradient(900px 400px at 85% 0,#d1fae5,transparent 60%),linear-gradient(#f0fdf4,#f4f9f6)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding-top:48px;padding-bottom:48px}
+.hero h1{font-size:44px;line-height:1.1;font-weight:800;letter-spacing:-1.2px}
+.hero h1 u{text-decoration:none;color:var(--g);background:linear-gradient(transparent 82%,#f59e0b 82% 90%,transparent 90%)}
+.hero p{margin:16px 0 24px;color:#475569;font-size:16px;max-width:480px}
+.stack{position:relative;height:290px}
+.stack .cover{position:absolute;box-shadow:0 20px 30px rgba(15,23,42,.25)}
+section.s{padding:34px 0}
+.h2{font-size:22px;font-weight:800;letter-spacing:-.4px}
+.eyb{font-size:11px;font-weight:800;color:var(--g);letter-spacing:.08em;text-transform:uppercase}
+.fgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:18px}
+.fk{padding:16px;border-radius:16px;background:#fff;border:1px solid var(--line);box-shadow:var(--sh);transition:.2s;display:block}
+.fk:hover{transform:translateY(-3px);border-color:var(--g3)}
+.fk .fi{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;font-weight:800;font-size:12px;margin-bottom:10px}
+.fk b{display:block}.fk small{color:var(--mut);font-size:11px}
+.fk .n{float:right;font-size:11px;color:var(--mut);background:#f1f5f9;border-radius:99px;padding:2px 8px}
+/* cover/scene */
+.cover{width:9em;aspect-ratio:3/4;font-size:var(--s,10px);border-radius:.4em .7em .7em .4em;background:linear-gradient(155deg,var(--c1),#0f172a 130%);color:#fff;padding:1em .9em .8em 1.2em;display:flex;flex-direction:column;position:relative;overflow:hidden;border-left:.55em solid rgba(0,0,0,.28)}
+.cover:after{content:'';position:absolute;inset:0;background:linear-gradient(100deg,rgba(255,255,255,.22),transparent 30%)}
+.cover .cv-top{font-style:normal;font-size:.62em;font-weight:800;letter-spacing:.14em;opacity:.85}
+.cover h4{font-size:1.12em;line-height:1.15;font-weight:800;margin:.7em 0 auto;text-transform:uppercase;letter-spacing:-.01em}
+.cover .cv-ch{width:100%;margin:.6em 0;opacity:.9}
+.cover span{font-size:.66em;font-weight:600;opacity:.92;border-top:1px solid rgba(255,255,255,.4);padding-top:.5em}
+.scene{position:relative;overflow:hidden;display:grid;place-items:center;aspect-ratio:4/3;border-radius:14px}
+.scene .cover{transform:rotate(-3deg);box-shadow:0 14px 24px rgba(0,0,0,.35)}
+.scene .real{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2}
+.scene.ph img{width:100%;height:100%;object-fit:cover}
+.sc0{background:radial-gradient(circle at 15% 25%,rgba(255,228,170,.7) 0 6%,transparent 7%),radial-gradient(circle at 80% 18%,rgba(255,255,255,.5) 0 5%,transparent 6%),radial-gradient(circle at 65% 70%,rgba(255,210,140,.35) 0 9%,transparent 10%),linear-gradient(165deg,#d8b98c,#9c6b43 55%,#5f3b22)}
+.sc1{background:radial-gradient(circle at 25% 20%,rgba(255,255,255,.35) 0 4%,transparent 5%),radial-gradient(circle at 75% 30%,rgba(255,200,120,.45) 0 7%,transparent 8%),radial-gradient(circle at 50% 78%,rgba(255,255,255,.2) 0 8%,transparent 9%),linear-gradient(170deg,#334155,#7c4a25 70%,#4a2c15)}
+.sc2{background:radial-gradient(circle at 80% 15%,#fff 0 12%,transparent 13%),radial-gradient(circle at 20% 70%,rgba(255,255,255,.7) 0 8%,transparent 9%),linear-gradient(170deg,#f1f5f9,#e5d9c3 70%,#cdb48c)}
+.open{display:flex;font-size:var(--s,10px);width:21em;transform:rotate(-2deg);filter:drop-shadow(0 14px 18px rgba(0,0,0,.35))}
+.open .pg{flex:1;background:#fffef9;padding:1.2em;aspect-ratio:3/4;display:flex;flex-direction:column;gap:.55em}
+.open .pg:first-child{border-radius:.4em 0 0 .4em;background:linear-gradient(90deg,#fffef9 85%,#e8e2d0)}
+.open .pg:last-child{border-radius:0 .4em .4em 0;background:linear-gradient(270deg,#fffef9 85%,#e8e2d0)}
+.open u{display:block;height:.45em;background:#cbd5e1;border-radius:9px}
+.open u.hl{background:#fde047}
+.open u.s{width:60%}
+.spines{display:flex;gap:.3em;align-items:flex-end;font-size:var(--s,10px)}
+.spines i{display:block;width:3.2em;border-radius:.3em;box-shadow:0 8px 14px rgba(0,0,0,.3);background:linear-gradient(90deg,rgba(255,255,255,.25),transparent 25%),var(--c)}
+.tbl{font-size:var(--s,10px);background:#fff;border-radius:1em;padding:1.2em;width:20em;box-shadow:0 14px 20px rgba(0,0,0,.25);transform:rotate(2deg)}
+.tbl b{display:block;font-size:1.1em;margin-bottom:.6em;color:var(--g2)}
+.tbl div{display:grid;grid-template-columns:repeat(4,1fr);gap:.3em}
+.tbl i{height:1.3em;background:#e2e8f0;border-radius:.2em}.tbl i:nth-child(-n+4){background:var(--g3)}
+/* book card */
+.bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.bgrid.c4{grid-template-columns:repeat(4,1fr)}
+.bc{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--sh);display:flex;flex-direction:column;transition:.2s}
+.bc:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(15,23,42,.12)}
+.bc .scene{border-radius:0;aspect-ratio:16/10}
+.bc .tg{position:absolute;top:10px;left:10px;right:10px;display:flex;justify-content:space-between;z-index:3}
+.bc .bd2{padding:14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.bc .mk{font-size:10.5px;font-weight:800;color:var(--g);text-transform:uppercase;letter-spacing:.03em}
+.bc h3{font-size:15.5px;line-height:1.3;font-weight:800;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:40px}
+.bc .au{font-size:12px;color:var(--mut)}
+.pr{display:flex;justify-content:space-between;align-items:flex-end;margin-top:auto;padding-top:8px}
+.pr small{display:block;font-size:10px;color:var(--mut);font-weight:600}
+.pr b{font-size:17px;font-weight:800}
+.pr .o{color:var(--amb);text-align:right}.pr .o b{font-size:13px}
+.bc .ac{display:grid;grid-template-columns:1fr 1.3fr;gap:8px;margin-top:10px}
+/* catalog layout */
+.cl{display:grid;grid-template-columns:250px 1fr;gap:22px;align-items:start}
+.side{position:sticky;top:76px;display:grid;gap:14px}
+.ck{display:flex;align-items:center;gap:9px;padding:6px 0;cursor:pointer;font-size:13px}
+.ck input{accent-color:var(--g);width:16px;height:16px}
+.ck em{margin-left:auto;font-style:normal;font-size:11px;color:var(--mut)}
+.pg-n{display:flex;gap:6px;justify-content:center;margin-top:22px}
+.pg-n button{min-width:36px;height:36px;border-radius:10px;background:#fff;border:1px solid var(--line);font-weight:700}
+.pg-n button.on{background:var(--g);color:#fff;border-color:var(--g)}
+/* detail */
+.dl{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+.thumbs button{border-radius:12px;overflow:hidden;position:relative;border:2px solid transparent;aspect-ratio:4/3;padding:0}
+.thumbs button.on{border-color:var(--g)}
+.thumbs button .scene{aspect-ratio:auto;height:100%;border-radius:0}
+.thumbs button span{position:absolute;left:0;right:0;bottom:0;background:rgba(15,23,42,.7);color:#fff;font-size:10px;padding:2px;text-align:center;font-weight:600}
+.thumbs .cover,.thumbs .open,.thumbs .spines,.thumbs .tbl{--s:5px}
+.mainimg{position:relative}
+.mainimg .scene{aspect-ratio:4/3.2}
+.mainimg .bdg{position:absolute;z-index:4}
+.zoom{position:absolute;right:12px;bottom:12px;z-index:4;background:rgba(15,23,42,.75);color:#fff;padding:6px 12px;border-radius:9px;font-size:12px;font-weight:600}
+.okbox{background:var(--mint);border:1px solid #a7f3d0;border-radius:var(--r);padding:16px;display:flex;gap:12px}
+.okic{width:36px;height:36px;border-radius:11px;background:var(--g);color:#fff;display:grid;place-items:center;flex:none}
+.ci{display:flex;gap:11px;padding:11px 13px;border:1px solid var(--line);border-radius:12px;margin-bottom:9px}
+.ci.w{background:#fffbeb;border-color:#fde68a}
+.ci .d{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;color:#fff;background:var(--g3);flex:none}
+.ci.w .d{background:#f59e0b}
+.ci b{display:block;font-size:13px}.ci span{font-size:12px;color:var(--mut)}
+.info{background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;gap:10px;margin:14px 0}
+.opt{position:relative;border:2px solid var(--line);border-radius:14px;padding:14px;cursor:pointer;background:#fff;transition:.15s;display:block}
+.opt input{position:absolute;opacity:0}
+.opt.on{border-color:var(--g);background:var(--mint)}
+.opt .pp{font-size:24px;font-weight:800;margin:4px 0}
+.opt s{font-size:11px;color:var(--mut)}
+.opt .rb{position:absolute;top:12px;right:12px;width:20px;height:20px;border-radius:50%;border:2px solid #cbd5e1;display:grid;place-items:center;color:#fff}
+.opt.on .rb{background:var(--g);border-color:var(--g)}
+.slr{display:flex;gap:12px;align-items:center}
+.pic{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#10b981,#065f3b);color:#fff;display:grid;place-items:center;font-weight:800;flex:none}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.stp{display:flex;gap:10px;align-items:center;padding:12px 14px;border:1px solid var(--line);border-radius:14px;background:#fff}
+.stp .n{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#e2e8f0;font-weight:800;font-size:12px;flex:none}
+.stp.on{border-color:var(--g3);background:var(--mint)}.stp.on .n,.stp.dn .n{background:var(--g);color:#fff}
+.stp small{display:block;color:var(--mut);font-size:11px}
+.co{display:grid;grid-template-columns:1.4fr 1fr;gap:20px;align-items:start}
+.rd{display:flex;gap:12px;align-items:flex-start;padding:12px;border:1.5px solid var(--line);border-radius:12px;cursor:pointer;margin-bottom:8px}
+.rd input{accent-color:var(--g);margin-top:3px}
+.rd.on{border-color:var(--g);background:var(--mint)}
+.slots{display:flex;flex-wrap:wrap;gap:8px}
+.slots button{padding:9px 14px;border:1.5px solid var(--line);border-radius:11px;background:#fff;font-weight:600;font-size:13px}
+.slots button.on{background:var(--g);color:#fff;border-color:var(--g)}
+.sumr{display:flex;justify-content:space-between;padding:6px 0;font-size:13px}
+.tot{background:var(--mint);border-radius:12px;padding:14px;display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.tot b{font-size:22px;color:var(--g2)}
+/* timeline */
+.tl{position:relative;padding-left:46px}
+.tl:before{content:'';position:absolute;left:17px;top:12px;bottom:12px;width:2px;background:var(--line)}
+.ts{position:relative;padding:12px 14px;margin-bottom:10px;border-radius:14px}
+.ts .dt{position:absolute;left:-46px;top:10px;width:36px;height:36px;border-radius:50%;background:#fff;border:2px solid var(--line);display:grid;place-items:center;color:#94a3b8;font-weight:800}
+.ts.dn .dt{background:var(--g);border-color:var(--g);color:#fff}
+.ts.cu{background:var(--mint);border:1px solid #a7f3d0}.ts.cu .dt{border-color:var(--g);color:var(--g)}
+.ts b{display:block}.ts span{font-size:12px;color:var(--mut)}
+.otp{font-size:40px;font-weight:800;letter-spacing:.3em;text-align:center;color:var(--g2);background:var(--mint);border-radius:14px;padding:14px 0 14px .3em;font-variant-numeric:tabular-nums}
+.tabs{display:inline-flex;background:#e8f0ec;border-radius:12px;padding:4px;gap:4px}
+.tabs button{padding:8px 16px;border-radius:9px;font-weight:700;color:#475569}
+.tabs button.on{background:#fff;color:var(--g2);box-shadow:var(--sh)}
+.banner{background:linear-gradient(95deg,#0b7a4b,#10b981);color:#fff;border-radius:16px;padding:18px 22px;display:flex;gap:14px;align-items:center}
+.safe li{list-style:none;display:flex;gap:9px;margin-bottom:10px;font-size:13px}
+/* chat */
+.chat{display:flex;flex-direction:column;height:560px}
+.msgs{flex:1;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:#fafcfb}
+.m{max-width:75%;padding:10px 14px;border-radius:16px;font-size:13.5px}
+.m small{display:block;font-size:10px;opacity:.7;margin-top:3px;text-align:right}
+.m.me{align-self:flex-end;background:var(--g);color:#fff;border-bottom-right-radius:4px}
+.m.th{align-self:flex-start;background:#e9eef2;border-bottom-left-radius:4px}
+.m.sy{align-self:center;background:#fff;border:1px solid var(--line);text-align:center;font-size:12px;color:#475569;max-width:80%}
+.qk{display:flex;gap:8px;flex-wrap:wrap;padding:10px 16px 0}
+.qk button{padding:6px 12px;border-radius:99px;background:#f1f5f9;font-size:12px;font-weight:600}
+.qk button:hover{background:var(--mint2)}
+.cb{display:flex;gap:10px;padding:12px 16px}
+/* admin */
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.kpi .card{padding:16px}
+.kpi small{font-size:10.5px;color:var(--mut);font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.kpi b{display:block;font-size:26px;font-weight:800;margin-top:4px}
+.bars .br2{margin-bottom:14px}
+.bars .tp{display:flex;justify-content:space-between;font-size:13px;font-weight:700;margin-bottom:5px}
+.bars .tr{height:7px;background:#f1f5f9;border-radius:9px;overflow:hidden}
+.bars .tr i{display:block;height:100%;border-radius:9px}
+.donut{width:150px;height:150px;border-radius:50%;position:relative;flex:none}
+.donut:after{content:'';position:absolute;inset:26px;background:#fff;border-radius:50%}
+.donut div{position:absolute;inset:0;display:grid;place-content:center;text-align:center;z-index:2}
+.donut b{font-size:26px;line-height:1}
+table.t{width:100%;border-collapse:collapse;font-size:13px}
+table.t th{text-align:left;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);padding:10px;border-bottom:1px solid var(--line)}
+table.t td{padding:12px 10px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
+.tw{overflow:auto}
+.lock{max-width:420px;margin:60px auto;text-align:center}
+.lock .lic{width:60px;height:60px;border-radius:18px;background:var(--mint);color:var(--g);display:grid;place-items:center;margin:0 auto 14px}
+/* footer */
+footer{background:#0f172a;color:#cbd5e1;margin-top:50px;padding:44px 0 20px}
+footer .fg2{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px}
+footer h5{color:#fff;font-size:14px;margin-bottom:12px}
+footer a,footer p{display:block;font-size:12.5px;color:#94a3b8;margin-bottom:8px}
+footer a:hover{color:#6ee7b7}
+footer .cp{border-top:1px solid #1e293b;margin-top:30px;padding-top:18px;display:flex;justify-content:space-between;font-size:12px;color:#64748b;flex-wrap:wrap;gap:10px}
+.pill{display:inline-block;background:#052e22;color:#6ee7b7;border-radius:8px;padding:5px 10px;font-size:11.5px;font-weight:600}
+/* toast/modal */
+#toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);z-index:200;display:grid;gap:8px}
+#toast div{background:#0f172a;color:#fff;padding:11px 18px;border-radius:12px;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,.3);animation:up .25s}
+#toast div.e{background:#be123c}
+@keyframes up{from{opacity:0;transform:translateY(10px)}}
+.ov{position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:150;display:grid;place-items:center;padding:20px}
+.md{background:#fff;border-radius:20px;max-width:420px;width:100%;padding:24px;max-height:90vh;overflow:auto}
+.ph-up{border:2px dashed #cbd5e1;border-radius:14px;padding:22px;text-align:center;cursor:pointer;background:#f8fafc}
+.ph-up:hover{border-color:var(--g3);background:var(--mint)}
+.pth{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+.pth div{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:1}
+.pth img{width:100%;height:100%;object-fit:cover}
+.pth button{position:absolute;top:6px;right:6px;width:24px;height:24px;border-radius:50%;background:var(--red);color:#fff;font-weight:800;line-height:1}
+.crumb{font-size:12px;color:var(--mut);padding:14px 0}
+.crumb b{color:var(--ink)}
+.empty{text-align:center;padding:50px 20px;color:var(--mut)}
+@media(max-width:960px){
+ .hd>div{flex-wrap:wrap;gap:10px}.hs{order:5;max-width:none;flex-basis:100%}
+ .hero .wrap,.dl,.co,.cl{grid-template-columns:1fr}.hero h1{font-size:32px}.stack{height:230px}
+ .bgrid,.bgrid.c4{grid-template-columns:1fr 1fr}.fgrid{grid-template-columns:repeat(2,1fr)}
+ .kpi{grid-template-columns:1fr 1fr}.side{position:static}
+ footer .fg2{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr}
+ .g2,.g3,.g4{grid-template-columns:1fr}.hd nav a{padding:6px 8px}.usr span{display:none}
+ .two{grid-template-columns:1fr!important}
+}
+@media(max-width:560px){.bgrid,.bgrid.c4{grid-template-columns:1fr}.hero h1{font-size:28px}}
+.um{position:relative}.um .pop{display:none;position:absolute;right:0;top:50px;width:290px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 40px rgba(15,23,42,.18);padding:10px;z-index:60}
+.um.show .pop{display:block}.usr{cursor:pointer}.pop a{display:flex;align-items:center;gap:8px;padding:9px 10px;border-radius:10px;font-weight:600;color:#334155}.pop a:hover{background:var(--mint);color:var(--g2)}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:#f1f5f9;border-radius:12px;padding:3px;margin:6px 0}.seg button{padding:8px;border-radius:10px;font-weight:700;color:#64748b}.seg button.on{background:#fff;color:var(--g2);box-shadow:var(--sh)}
+.faq details{border:1px solid var(--line);border-radius:12px;background:#fff;padding:12px 14px;margin-bottom:8px}.faq summary{font-weight:700;cursor:pointer}.faq details[open]{border-color:var(--g3)}.faq p{margin-top:8px;color:#475569}
+.bot{height:300px;overflow:auto;display:grid;align-content:start;gap:8px;padding:12px;background:#f8fafc}.bt{padding:9px 12px;border-radius:12px;max-width:88%;background:#fff;border:1px solid var(--line);font-size:13px}.bt.me{background:var(--g);color:#fff;justify-self:end;border:0}
+.chips{display:flex;flex-wrap:wrap;gap:6px;padding:10px 12px}.chips button{background:#f1f5f9;border-radius:99px;padding:6px 11px;font-size:12px;font-weight:600}.chips button:hover{background:var(--mint2)}
+.pdp{scroll-margin-top:80px}.toc button{display:block;width:100%;text-align:left;padding:8px 10px;border-radius:10px;font-weight:600;color:#475569}.toc button:hover{background:var(--mint);color:var(--g2)}
+</style>
+</head>
+<body>
+<div id="hdr"></div>
+<main id="app"></main>
+<footer id="ftr"></footer>
+<div id="toast"></div>
+<div id="modal"></div>
+
+<script>
+(()=>{
+'use strict';
+
+//#AUTH-START
+/* Sandi admin TIDAK disimpan di sini. Hanya hash (SHA-256 berulang + salt). */
+const AUTH={salt:'706827334f145c52',hash:'f6a481a9d2e16bbc15a5d6df9660eb84d85df420fb8ce8cca2c3e6bddb72b50d',iter:20000};
+const _P=[];for(let n=2;_P.length<64;n++){let ok=true;for(let d=2;d*d<=n;d++)if(n%d===0){ok=false;break}if(ok)_P.push(n)}
+const _fr=x=>Math.floor((x-Math.floor(x))*4294967296)>>>0;
+const _K=_P.map(p=>_fr(Math.cbrt(p)));
+const _H=_P.slice(0,8).map(p=>_fr(Math.sqrt(p)));
+function sha256hex(s){
+  const bt=new TextEncoder().encode(s),l=bt.length,nb=((l+9+63)>>6)<<6,m=new Uint8Array(nb);
+  m.set(bt);m[l]=0x80;
+  const dv=new DataView(m.buffer);dv.setUint32(nb-8,Math.floor(l*8/4294967296));dv.setUint32(nb-4,(l*8)>>>0);
+  const h=_H.slice(),w=new Uint32Array(64),R=(x,n)=>(x>>>n)|(x<<(32-n));
+  for(let o=0;o<nb;o+=64){
+    for(let i=0;i<16;i++)w[i]=dv.getUint32(o+i*4);
+    for(let i=16;i<64;i++){const s0=R(w[i-15],7)^R(w[i-15],18)^(w[i-15]>>>3),s1=R(w[i-2],17)^R(w[i-2],19)^(w[i-2]>>>10);w[i]=(w[i-16]+s0+w[i-7]+s1)>>>0}
+    let a=h[0],b=h[1],c=h[2],d=h[3],e=h[4],f=h[5],g=h[6],k=h[7];
+    for(let i=0;i<64;i++){
+      const S1=R(e,6)^R(e,11)^R(e,25),ch=(e&f)^(~e&g),t1=(k+S1+ch+_K[i]+w[i])>>>0,
+            S0=R(a,2)^R(a,13)^R(a,22),mj=(a&b)^(a&c)^(b&c),t2=(S0+mj)>>>0;
+      k=g;g=f;f=e;e=(d+t1)>>>0;d=c;c=b;b=a;a=(t1+t2)>>>0;
+    }
+    [a,b,c,d,e,f,g,k].forEach((v,i)=>h[i]=(h[i]+v)>>>0);
+  }
+  return h.map(x=>x.toString(16).padStart(8,'0')).join('');
+}
+function derive(pw){let h=sha256hex(AUTH.salt+':'+pw);for(let i=0;i<AUTH.iter;i++)h=sha256hex(h+AUTH.salt);return h}
+//#AUTH-END
+
+/* ========== util ========== */
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const rp=n=>'Rp '+Number(n||0).toLocaleString('id-ID');
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const hashStr=s=>[...String(s)].reduce((a,c)=>a+c.charCodeAt(0),0);
+const now=()=>new Date().toLocaleString('id-ID',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}).replace(/\./g,':')+' WIB';
+const hm=()=>new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'}).replace('.',':');
+const PATH={
+ check:'M20 6 9 17l-5-5',
+ shield:'M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z|m9 12 2 2 4-4',
+ pin:'M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z|M12 7.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5',
+ book:'M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z|M4 5v16',
+ clock:'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18|M12 7v5l3 2',
+ search:'M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14|m20 20-4-4',
+ user:'M20 21a8 8 0 1 0-16 0|M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8',
+ lock:'M5 11h14v10H5z|M8 11V7a4 4 0 0 1 8 0v4',
+ chat:'M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z',
+ bag:'M6 7h12l1 13H5z|M9 7a3 3 0 0 1 6 0',
+ upload:'M12 16V4m0 0L8 8m4-4 4 4|M4 16v4h16v-4',
+ trash:'M4 7h16|M9 7V4h6v3|M6 7l1 13h10l1-13',
+ star:'m12 2 3 7 7 .6-5.3 4.7L18.5 22 12 18l-6.5 4 1.8-7.7L2 9.6 9 9z',
+ alert:'M12 3 2 20h20z|M12 10v4|M12 17v.01',
+ tag:'M3 12V4h8l10 10-8 8z|M7.5 8.5v.01',
+ dl:'M12 4v12m0 0-4-4m4 4 4-4|M4 20h16',
+ x:'M6 6l12 12M18 6 6 18',
+ qr:'M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3z|M14 14h3v3h-3zM19 19h2v2h-2zM14 20v1M20 14v2',
+ copy:'M9 9h11v11H9z|M5 15V4h11',
+ home:'M3 11 12 3l9 8|M5 10v10h14V10',
+ eye:'M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z|M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6',
+ send:'m22 2-11 11|m22 2-7 20-4-9-9-4z',
+ out:'M10 17l5-5-5-5|M15 12H3|M21 4v16'
+};
+const ic=(n,s=16,sw=2)=>`<svg class="ic" width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round">${PATH[n].split('|').map(d=>`<path d="${d}"/>`).join('')}</svg>`;
+const LOGO='<span class="lg">NP</span>';
+const toast=(m,e)=>{const d=document.createElement('div');d.textContent=m;if(e)d.className='e';$('#toast').appendChild(d);setTimeout(()=>d.remove(),3200)};
+const modal=h=>{$('#modal').innerHTML=h?`<div class="ov" data-act="ovclose"><div class="md">${h}</div></div>`:''};
+
+/* ========== data ========== */
+const FAK={
+ FK:{n:'Kedokteran & Kesehatan',full:'Fakultas Kedokteran',c:'#e11d48',bg:'#ffe4e6',cnt:'140+',ex:'Anatomi, Fisiologi, Atlas',cod:'Kantin FK Gedung Baru'},
+ FEB:{n:'Ekonomi & Bisnis',full:'Fakultas Ekonomika dan Bisnis',c:'#d97706',bg:'#fef3c7',cnt:'280+',ex:'Manajemen, Akuntansi, Mikro',cod:'Kantin D4 FEB UNNES'},
+ FT:{n:'Fakultas Teknik',full:'Fakultas Teknik',c:'#ea580c',bg:'#ffedd5',cnt:'220+',ex:'Informatika, Mesin, Sipil',cod:'Lobi Dekanat Gedung E FT'},
+ FMIPA:{n:'Matematika & IPA',full:'Fakultas Matematika dan Ilmu Pengetahuan Alam',c:'#0891b2',bg:'#cffafe',cnt:'180+',ex:'Kalkulus, Fisika, Biologi',cod:'Gazebo GSG Graha Cendekia'},
+ FIPP:{n:'Ilmu Pendidikan',full:'Fakultas Ilmu Pendidikan dan Psikologi',c:'#2563eb',bg:'#dbeafe',cnt:'200+',ex:'MKU, Kurikulum, BK',cod:'Lobi Gedung A1 FIPP'},
+ FH:{n:'Fakultas Hukum',full:'Fakultas Hukum',c:'#7c3aed',bg:'#ede9fe',cnt:'150+',ex:'Pidana, Perdata, HTN',cod:'Selasar Gedung K3 FH'},
+ FBS:{n:'Bahasa & Seni',full:'Fakultas Bahasa dan Seni',c:'#db2777',bg:'#fce7f3',cnt:'110+',ex:'Linguistik, Sastra, DKV',cod:'Gazebo GSG Graha Cendekia'},
+ FISIP:{n:'Ilmu Sosial & Politik',full:'Fakultas Ilmu Sosial dan Ilmu Politik',c:'#0d9488',bg:'#ccfbf1',cnt:'130+',ex:'Sosiologi, Geografi, PPKn',cod:'Koridor C6 FISIP UNNES'},
+ FIK:{n:'Ilmu Keolahragaan',full:'Fakultas Ilmu Keolahragaan',c:'#f97316',bg:'#ffedd5',cnt:'90+',ex:'FIK, Fisiologi, Gerak',cod:'Lobi Dekanat FIK & Lapangan Atletik'}
+};
+const COD=['Gazebo Perpustakaan Pusat UNNES','Kantin D4 FEB UNNES','Kantin FK Gedung Baru','Lobi Dekanat Gedung E FT','Gazebo GSG Graha Cendekia','Lobi Gedung A1 FIPP','Selasar Gedung K3 FH','Koridor C6 FISIP UNNES','Lobi Dekanat FIK & Lapangan Atletik'];
+const CODDESC={'Gazebo Perpustakaan Pusat UNNES':'Samping kolam bundaran air mancur, dekat loker buku terbuka.','Kantin D4 FEB UNNES':'Area kantin terbuka, ramai dan terpantau CCTV.','Kantin FK Gedung Baru':'Teras kantin, dekat pos keamanan fakultas.'};
+const SLOTS=['09:00 WIB','12:00 WIB (Istirahat / Dzuhur)','15:30 WIB','16:30 WIB'];
+const VOUCH={MABA2025:{v:5000,l:'Voucher Promo Maba Gasal 2025'},NESSHEMAT:{v:3000,l:'Voucher NessHemat'}};
+const PUB_NOTE='Terdapat 14 baris penandaan rapi dengan stabilo kuning transparan untuk terminologi Latin penting.';
+
+const mk=(id,fak,title,author,pub,matkul,sem,buy,rent,orig,cond,lab,sn,nim,ang,rt,tx,extra={})=>({id,fak,title,author,pub,matkul,sem,buy,rent,orig,cond,lab,seller:{name:sn,nim,ang,rt,tx},deposit:0,cod:FAK[fak].cod,pages:'412',isbn:'978-623-'+(200+hashStr(id)%99)+'-'+(100+hashStr(title)%899)+'-'+(hashStr(id)%9),...extra});
+const BOOKS=[
+ mk('b01','FK','Sobotta Atlas Anatomi Manusia Edisi 24','Prof. Dr. Jens Waschke & Tobias M. Böckers','EGC','Anatomi Dasar & Sistem Lokomotor (FKD 101)','Smt 1-2',420000,65000,1450000,90,'Jilid Asli EGC Terverifikasi','Rizky A.','4611421003','Pendidikan Dokter \'21',4.9,12,{deposit:50000,noteT:'Catatan Stabilo Kuning Halus pada Bab Saraf Cranial',note:PUB_NOTE,prog:'S1 Pendidikan Dokter',pages:'3 jilid + 1 booklet',pack:'Paket Komprehensif: Volume 1, Volume 2, Volume 3 & Buku Tabel Ekstra'}),
+ mk('b02','FEB','Pengantar Akuntansi Adaptasi Indonesia Edisi 4','Carl S. Warren, James M. Reeve, Jonathan E. Duchac, Ersa Tri Wahyuni, Amir Abadi Yusuf','Salemba Empat','Pengantar Akuntansi 1 / Akuntansi Dasar','Smt 1-2',48000,18000,185000,92,'Bebas Coretan + Catatan Margin Pensil','Leonel Azriel','7211421045','Akuntansi \'21',4.9,18,{isbn:'978-979-061-755-1',prog:'S1 Akuntansi',pack:'Softcover tebal, lengkap Bab 1-26'}),
+ mk('b03','FEB','Manajemen Keuangan Perusahaan Teori & Praktik','Eugene F. Brigham & Michael C. Ehrhardt','Salemba Empat','Manajemen Keuangan','Smt 3-4',55000,20000,320000,93,'Rapi, Tabel Bunga Lengkap','Putri Anindya','7101422110','Manajemen \'22',4.8,9,{prog:'S1 Manajemen'}),
+ mk('b04','FEB','Manajemen Pemasaran Edisi 15 (Jilid 1 & 2)','Philip Kotler & Kevin Lane Keller','Erlangga','Manajemen Pemasaran','Smt 3-4',65000,22000,410000,95,'Seperti Baru','Nabila Putri','7101423088','Manajemen \'23',5.0,7,{prog:'S1 Manajemen'}),
+ mk('b05','FEB','Statistika untuk Bisnis dan Ekonomi Terpadu Edisi 12','Anderson, Sweeney, Williams, Camm, Cochran','Salemba Empat','Statistika Bisnis','Smt 2-3',52000,18000,350000,88,'Layak Pakai, Ada Stabilo','Fadhil Ramadhan','7101422054','Manajemen \'22',4.7,11,{prog:'S1 Manajemen',note:'Ada beberapa stabilo pada rumus distribusi probabilitas.',noteT:'Catatan Stabilo pada Bab Distribusi'}),
+ mk('b06','FEB','Metodologi Penelitian Manajemen','Prof. Dr. Sugiyono','Alfabeta','Metodologi Penelitian','Smt 5',45000,15000,160000,91,'Mulus, Ada Tab Rapi','Salsa Maharani','7101421019','Manajemen \'21',4.9,14,{prog:'S1 Manajemen / Akuntansi'}),
+ mk('b07','FT','Termodinamika Teknik: Pendekatan Praktis','Yunus A. Cengel & Michael A. Boles','Erlangga','Termodinamika II Teknik Mesin','Smt 3',85000,28000,420000,85,'Layak Pakai, Lengkap Kertas Uap','Bagas Prasetyo','5201422019','Mesin \'22',4.8,10,{prog:'S1 Teknik Mesin',note:'Rumus rapi di tabel uap.',noteT:'Catatan Rumus pada Tabel Uap'}),
+ mk('b08','FT','Dasar-Dasar Termodinamika Teknik','Michael J. Moran & Howard N. Shapiro','Wiley (Terjemahan)','Konversi Energi, Mesin & Elektro','Smt 3',40000,15000,260000,86,'Bersih, Sedikit Catatan','Reza Pahlevi','5201422031','Teknik Mesin \'22',4.6,6,{prog:'S1 Teknik Mesin / Elektro'}),
+ mk('b09','FMIPA','Kalkulus dan Geometri Analitis Jilid 1 Edisi 9','Dale Varberg, Edwin J. Purcell, Steven E. Rigdon','Erlangga','Kalkulus Lanjut & Pemrograman Web','Smt 2',55000,20000,230000,92,'Mulus + Ada Pembatas Bab','Arif Hidayat','4101422040','Pendidikan Matematika \'22',4.8,8,{prog:'S1 Pendidikan Matematika / Informatika'}),
+ mk('b10','FMIPA','Kimia Dasar: Konsep-Konsep Inti','Raymond Chang','Erlangga','Kimia Dasar','Smt 1',48000,17000,240000,90,'Rapi, Tabel Periodik Utuh','Lintang Safitri','4401423015','Kimia \'23',4.9,5,{prog:'S1 Kimia / Biologi'}),
+ mk('b11','FIPP','Psikologi Perkembangan Peserta Didik & Landasan Kependidikan','Prof. Sugiyono & Tim Dosen','UNNES Press','MKU Kependidikan UNNES','Smt 1-2',42000,15000,120000,90,'Sampul Plastik Bening','Fajar Wicaksono','1102422031','PGSD \'22',4.8,13,{prog:'Semua Prodi FIPP',pack:'Wajib MKU Seluruh Prodi Smt 1-2'}),
+ mk('b12','FIPP','Bimbingan dan Konseling di Institusi Pendidikan','Prof. H. Prayitno & Erman Amti','Rineka Cipta','Dasar Bimbingan Konseling','Smt 1-3',45000,16000,150000,93,'Ada Catatan Pinggir Pensil','Nadia Rahma','1301421022','BK \'21',4.7,6,{prog:'S1 Bimbingan Konseling'}),
+ mk('b13','FIPP','Psikologi Pendidikan Edisi 6 (Terjemahan Resmi)','John W. Santrock','Salemba Humanika','Psikologi Pendidikan','Smt 3-4',65000,22000,380000,95,'Original Hardcover, Tanpa Goresan','Dimas Rizki','1301420011','Psikologi \'20',5.0,4,{prog:'S1 Psikologi Pendidikan'}),
+ mk('b14','FH','Hukum Acara Pidana & Kitab Undang-Undang Hukum Pidana','Prof. Moeljatno & Tim Redaksi','Sinar Grafika','Hukum Pidana & KUHAP','Smt 3',62000,22000,210000,94,'Mulus + Index Tab Pasal Rapi','Sarah Ilma','8101421020','Ilmu Hukum \'21',4.9,15,{prog:'S1 Ilmu Hukum'}),
+ mk('b15','FH','Pokok-Pokok Hukum Perdata Edisi Revisi Lengkap','Prof. Subekti','Intermasa','Ilmu Hukum (Semester 2 Wajib)','Smt 2',52000,18000,175000,90,'Mulus + Bersih','Dimas Hafidz','8101422044','Ilmu Hukum \'22',4.8,9,{prog:'S1 Ilmu Hukum'}),
+ mk('b16','FBS','Linguistik Umum & Dasar-Dasar Semantik Indonesia','Abdul Chaer & Rineka Cipta','Rineka Cipta','Morfologi & Semantik, Pend. Bahasa & Sastra','Smt 2',38000,14000,140000,89,'Rapi + Ada Catatan Lembar di Bab Fonologi','Noufal Hakim','2101422018','Sastra Indonesia \'22',4.6,5,{prog:'S1 Bahasa & Sastra'}),
+ mk('b17','FISIP','Metodologi Penelitian Sosial & Sosiologi Politik','Prof. Soerjono Soekanto','Rajawali Pers','Metodologi Penelitian Sosial','Smt 5',49000,17000,185000,91,'Seperti Baru, Kertas HVS Bersih','Putri Wulandari','3101421007','Sosiologi \'21',4.9,8,{prog:'S1 Sosiologi & Antropologi'}),
+ mk('b18','FISIP','Dasar-Dasar Ilmu Politik Edisi Revisi','Prof. Miriam Budiardjo','Gramedia','Ilmu Politik Dasar','Smt 1',45000,16000,150000,88,'Sangat Bagus','Rian Ilyasa','3201422050','Ilmu Politik \'22',4.7,6,{prog:'S1 Ilmu Politik'}),
+ mk('b19','FIK','Fisiologi Olahraga & Biomekanika Gerak Manusia','Dr. Sugiyanto, M.Pd.','FIK UNNES Publishing','Kinesiologi & Anatomi Olahraga','Smt 3',45000,16000,160000,90,'Sedikit Coretan, Bonus Panduan Tes VO2Max','Leonel Azriel','6101422011','PJKR \'22',4.8,7,{prog:'S1 PJKR / IKOR'}),
+ mk('b20','FIK','Kinesiologi Olahraga: Analisis Mekanik Gerak Tubuh Manusia','Prof. Soeparlan & Tim Dosen Lab FIK','FIK UNNES','Wajib Semester 3 IKOR','Smt 3',55000,19000,190000,92,'Catatan Pensil Halus','Rizqi Maulana','6201421027','IKOR \'21',4.9,5,{prog:'S1 Ilmu Keolahragaan'}),
+ mk('b21','FIK','Buku Panduan Praktikum Pengukuran & Tes Kesegaran Jasmani','Laboratorium Kebugaran FIK UNNES','FIK UNNES','Lab Praktikum Tes Kesegaran','Smt 4',25000,0,70000,85,'Ada Tabel Skor Standar TKJI','Dewi Pangestu','6201422033','IKOR \'22',4.6,3,{prog:'S1 IKOR / PJKR'})
+];
+const HH=s=>{let x=7;for(const c of s)x=(x*31+c.charCodeAt(0))>>>0;return x};
+const NEWB=`FK|Buku Ajar Fisiologi Kedokteran Guyton dan Hall Edisi 13|Arthur C. Guyton & John E. Hall|EGC|Fisiologi Sistem Kedokteran|Smt 3|350000|55000|1100000
+FK|Histologi Dasar Junqueira Edisi 15|Anthony L. Mescher|EGC|Histologi Kedokteran Blok 2|Smt 2|185000|35000|620000
+FK|Farmakologi Dasar dan Klinik Katzung Edisi 14|Bertram G. Katzung|EGC|Farmakologi Kedokteran|Smt 4|280000|45000|950000
+FK|Robbins Basic Pathology Edisi 10|Vinay Kumar, Abul K. Abbas & Jon C. Aster|Elsevier|Patologi Klinik & Anatomi|Smt 3|320000|50000|1050000
+FK|Penuntun Praktikum Anatomi & Preparat Kadaver|Tim Dosen Lab Anatomi FK UNNES|FK UNNES|Praktikum Kadaver|Smt 1-2|25000|10000|60000
+FK|Atlas Anatomi Manusia Netter (Edisi Terjemahan)|Frank H. Netter|EGC|Anatomi Dasar|Smt 1-2|300000|48000|980000
+FEB|Manajemen Sumber Daya Manusia|Malayu S.P. Hasibuan|Bumi Aksara|Manajemen SDM|Smt 3|48000|17000|130000
+FEB|Prinsip-Prinsip Ekonomi: Makroekonomi|N. Gregory Mankiw|Salemba Empat|Ekonomi Makro|Smt 2|55000|20000|240000
+FEB|Prinsip-Prinsip Ekonomi: Mikroekonomi|N. Gregory Mankiw|Salemba Empat|Ekonomi Mikro|Smt 1|55000|20000|240000
+FEB|Akuntansi Biaya|Mulyadi|Salemba Empat|Akuntansi Biaya|Smt 3|48000|16000|170000
+FEB|Perilaku Organisasi|Stephen P. Robbins & Timothy A. Judge|Salemba Empat|Perilaku Organisasi|Smt 3|60000|20000|290000
+FEB|Manajemen Operasi: Keberlanjutan dan Rantai Pasokan|Jay Heizer & Barry Render|Salemba Empat|Manajemen Operasi|Smt 4|62000|21000|330000
+FEB|Analisis Laporan Keuangan|Kasmir|Rajawali Pers|Analisis Laporan Keuangan|Smt 5|42000|15000|120000
+FEB|Manajemen Strategis: Konsep dan Kasus|Fred R. David|Salemba Empat|Manajemen Strategis|Smt 6|58000|20000|300000
+FEB|Perpajakan|Mardiasmo|Andi|Perpajakan|Smt 4|40000|14000|110000
+FEB|Metode Penelitian Kuantitatif, Kualitatif, dan R&D|Prof. Dr. Sugiyono|Alfabeta|Metodologi Penelitian|Smt 5|48000|16000|150000
+FEB|Ekonomi Pembangunan|Michael P. Todaro & Stephen C. Smith|Erlangga|Ekonomi Pembangunan|Smt 5|54000|19000|260000
+FT|Mekanika Fluida Edisi 8 (Terjemahan Resmi)|Frank M. White|Erlangga|Mekanika Fluida|Smt 3|78000|25000|400000
+FT|Analisis Struktur Terpadu Jilid 1 & 2|R.C. Hibbeler|Erlangga|Analisis Struktur|Smt 4|95000|30000|520000
+FT|Rangkaian Listrik Terpadu (Analisis Sirkuit AC/DC)|William H. Hayt Jr.|Erlangga|Rangkaian Listrik|Smt 2|70000|24000|380000
+FT|Dasar-Dasar Pemrograman C++ & Struktur Data|Tim Dosen PTIK UNNES|FT UNNES|Algoritma & Struktur Data|Smt 1|68000|22000|180000
+FT|Modul Praktikum Gambar Teknik & AutoCAD Dasar|Tim Dosen FT UNNES|FT UNNES|Gambar Teknik|Smt 1|30000|12000|80000
+FT|Introduction to Algorithms Edisi 3|Cormen, Leiserson, Rivest & Stein|MIT Press|Analisis Algoritma|Smt 4|120000|35000|650000
+FT|Mekanika Teknik: Statika|J.L. Meriam & L.G. Kraige|Erlangga|Mekanika Teknik|Smt 2|72000|24000|350000
+FMIPA|Fisika Dasar Edisi 10|David Halliday, Robert Resnick & Jearl Walker|Erlangga|Fisika Dasar|Smt 1-2|90000|30000|420000
+FMIPA|Biologi Campbell Edisi 11|Lisa A. Urry, Michael L. Cain, Steven A. Wasserman, Peter V. Minorsky & Jane B. Reece|Erlangga|Biologi Umum|Smt 2|75000|25000|480000
+FMIPA|Aljabar Linier Elementer Edisi 11|Howard Anton & Chris Rorres|Erlangga|Aljabar Linier|Smt 3|58000|19000|290000
+FMIPA|Buku Panduan Praktikum Laboratorium Terpadu FMIPA|Tim Laboratorium FMIPA UNNES|FMIPA UNNES|Praktikum Laboratorium|Smt 1-2|25000|0|60000
+FMIPA|Kimia Organik|Paula Yurkanis Bruice|Erlangga|Kimia Organik|Smt 3|68000|23000|350000
+FMIPA|Kalkulus dan Geometri Analitis Jilid 2 Edisi 9|Dale Varberg, Edwin J. Purcell & Steven E. Rigdon|Erlangga|Kalkulus Lanjut|Smt 3|55000|20000|230000
+FIPP|Model-Model Pembelajaran Inovatif Berorientasi Konstruktivistik|Dr. Trianto|Prestasi Pustaka|Desain Instruksional|Smt 4|50000|10000|140000
+FIPP|Pengembangan Kurikulum dan Bahan Ajar Tematik Sekolah Dasar|Dr. H. Rusman, M.Pd.|Rajawali Pers|Kurikulum & Pembelajaran PGSD|Smt 3|38000|14000|120000
+FIPP|Dasar-Dasar Evaluasi Pendidikan|Prof. Dr. Suharsimi Arikunto|Bumi Aksara|Evaluasi Pembelajaran|Smt 4|40000|15000|110000
+FIPP|Belajar dan Pembelajaran|Dimyati & Mudjiono|Rineka Cipta|Belajar & Pembelajaran|Smt 2|36000|13000|100000
+FIPP|Psikologi Perkembangan: Suatu Pendekatan Sepanjang Rentang Kehidupan|Elizabeth B. Hurlock|Erlangga|Psikologi Perkembangan|Smt 2|52000|18000|230000
+FH|Pengantar Hukum Tata Negara Indonesia|Prof. Jimly Asshiddiqie|Rajawali Pers|Hukum Tata Negara|Smt 3|70000|24000|220000
+FH|Hukum Acara Perdata: Gugatan, Persidangan, Pembuktian, dan Putusan|M. Yahya Harahap|Sinar Grafika|Praktik Perdata|Smt 4-5|80000|28000|260000
+FH|Hukum Dagang dan Kepailitan Perusahaan|Tim Penyusun Kompilasi UU Kepailitan & PKPU|FH UNNES|Hukum Bisnis|Smt 4|55000|19000|160000
+FH|Mengenal Hukum: Suatu Pengantar|Prof. Dr. Sudikno Mertokusumo|Liberty|Pengantar Ilmu Hukum|Smt 1|45000|16000|130000
+FH|Catatan Ringkas Kasus Peradilan Semu (Moot Court)|Tim Litigasi Mahasiswa FH UNNES|FH UNNES|PLKH & Peradilan Semu|Smt 6|35000|0|90000
+FBS|Prinsip-Prinsip Kritik Sastra & Teori Strukturalisme|Rachmat Djoko Pradopo|Gadjah Mada University Press|Teori Sastra|Smt 3|44000|16000|140000
+FBS|Tata Bahasa Baku Bahasa Indonesia Edisi IV|Anton M. Moeliono dkk.|Balai Pustaka|Tata Bahasa Indonesia|Smt 1|50000|18000|150000
+FBS|Format & Layout: Dasar-Dasar Desain Komunikasi Visual|Gavin Ambrose & Paul Harris|Edisi Terjemahan|DKV Dasar|Smt 2|75000|25000|240000
+FBS|An Introduction to Language Edisi 10|Victoria Fromkin, Robert Rodman & Nina Hyams|Cengage|Introduction to Linguistics|Smt 2|68000|24000|420000
+FBS|Modul Sketsa Dasar & Nirmana 2 Dimensi|Tim Studio FBS UNNES|FBS UNNES|Seni Rupa Dasar|Smt 1|32000|0|85000
+FISIP|Teori Sosiologi: Dari Sosiologi Klasik Sampai Perkembangan Terakhir Postmodern|George Ritzer|Pustaka Pelajar|Teori Sosiologi|Smt 4-6|85000|26000|290000
+FISIP|Pengantar Analisis Kebijakan Publik Edisi 2|William N. Dunn|Gadjah Mada University Press|Administrasi Publik|Smt 4|64000|22000|240000
+FISIP|Geografi Regional Indonesia & Pemetaan Sumber Daya|Tim Dosen Geografi FISIP UNNES|FISIP UNNES|Geografi Regional|Smt 3|52000|18000|150000
+FISIP|Catatan Inti & Bank Soal Ujian Metodologi Penelitian|Kompilasi Mahasiswa PPKn|Mandiri|Metodologi Penelitian|Smt 5|28000|0|60000
+FISIP|Sosiologi: Suatu Pengantar|Soerjono Soekanto|Rajawali Pers|Pengantar Sosiologi|Smt 1|46000|16000|140000
+FIK|Pencegahan & Perawatan Cedera Olahraga (PPCO)|Dr. Anies & Dosen Fisioterapi Olahraga|FIK UNNES|PPCO|Smt 4|52000|18000|170000
+FIK|Ilmu Kepelatihan Dasar & Periodisasi Latihan Atlet|Drs. H. Harsono, M.Sc.|FIK UNNES|Ilmu Kepelatihan|Smt 2|48000|17000|150000
+FIK|Psikologi Olahraga: Teori & Aplikasi Prestasi Atlet|Prof. Monty P. Satiadarma|FIK UNNES|Psikologi Olahraga|Smt 5|42000|15000|140000
+FIK|Teori dan Praktik Pembelajaran Pendidikan Jasmani|Tim Dosen PJKR FIK UNNES|FIK UNNES|Pembelajaran Penjas|Smt 3|40000|14000|120000`.split('\n');
+const SPOOL=['Aulia Rahmawati','Bayu Setiawan','Citra Maharani','Daffa Ramadhan','Elisa Putri','Fauzan Hakim','Gilang Pratama','Hesti Wulandari','Irfan Maulana','Jasmine Safira','Kiki Anggraini','Lutfi Hidayat','Maya Permata','Naufal Rizky','Okta Nurhayati','Putra Wijaya','Rani Kusuma','Satria Nugraha','Tiara Salsabila','Umar Faruq','Vina Oktaviani','Wahyu Saputra','Yoga Prakoso','Zahra Amalia'];
+const SPRODI={FK:['46','Pendidikan Dokter'],FEB:['71','Manajemen'],FT:['52','Teknik Mesin'],FMIPA:['44','Kimia'],FIPP:['13','PGSD'],FH:['81','Ilmu Hukum'],FBS:['21','Sastra Inggris'],FISIP:['31','Sosiologi'],FIK:['61','IKOR']};
+NEWB.forEach((r,i)=>{const a=r.split('|'),id='b'+(22+i),h=HH(id),f=SPRODI[a[0]],cond=85+h%12,y=21+h%4,sn=SPOOL[h%SPOOL.length];
+ BOOKS.push(mk(id,a[0],a[1],a[2],a[3],a[4],a[5],+a[6],+a[7],+a[8],cond,cond>=95?'Seperti Baru':cond>=92?'Mulus':cond>=89?'Rapi, Sangat Layak':'Layak Pakai, Ada Stabilo',sn,f[0]+'0'+(1+h%3)+'4'+y+String(100+h%899),f[1]+" '"+y,+(4.5+(h%6)/10).toFixed(1),3+h%14,{prog:'S1 '+f[1]}))});
+
+const SEED_LIST=[
+ {id:'NP-2026-0891',title:'Sobotta Atlas Anatomi Manusia Edisi 24',author:'Prof. Dr. Jens Waschke',fak:'FK',matkul:'Anatomi Klinik FK',isbn:'978-0-7020-5281-9',cond:90,note:'Highlight pensil 4 bab, tidak sobek.',owner:{name:'Dimas Raditya',nim:'4101421045'},buy:280000,rent:35000,cod:'Kantin FK Gedung Baru',photos:[],status:'pending',at:'Seed'},
+ {id:'NP-2026-0892',title:'Termodinamika Teknik: Pendekatan Praktis',author:'Yunus A. Cengel',fak:'FT',matkul:'Termo II Teknik Mesin',isbn:'978-0-07-339817-4',cond:80,note:'Rumus rapi di tabel uap.',owner:{name:'Bagas Prasetyo',nim:'5201422019'},buy:85000,rent:0,cod:'Lobi Dekanat Gedung E FT',photos:[],status:'pending',at:'Seed'},
+ {id:'NP-2026-0893',title:'Manajemen Pemasaran Kotler & Keller Ed. 15',author:'Philip Kotler & Kevin Lane Keller',fak:'FEB',matkul:'Pengantar Pemasaran FEB',isbn:'978-0-13-335045-8',cond:95,note:'Sampul mika original, bebas coretan.',owner:{name:'Nabila Putri',nim:'7101423088'},buy:110000,rent:20000,cod:'Kantin D4 FEB UNNES',photos:[],status:'pending',at:'Seed'},
+ {id:'NP-2026-0894',title:'Psikologi Perkembangan Peserta Didik',author:'Prof. Sugiyono & Tim Dosen',fak:'FIPP',matkul:'MKU Kependidikan UNNES',isbn:'978-602-446-219-0',cond:85,note:'Ujung cover agak terlipat, isi lengkap.',owner:{name:'Fajar Wicaksono',nim:'1102422031'},buy:45000,rent:0,cod:'Lobi Gedung A1 FIPP',photos:[],status:'pending',at:'Seed'}
+];
+
+/* ========== state ========== */
+const SEED_SO=[{id:'NP-ORD-2026-7710',buyer:'Raka Pramudya',nim:'7101423021',book:'Akuntansi Biaya',mode:'sewa',total:16000,pay:'Virtual Account BRI',cod:'Kantin D4 FEB UNNES',slot:'12:00 WIB',st:'baru',otp:'4821'},{id:'NP-ORD-2026-7702',buyer:'Salsabila Nur',nim:'7211423045',book:'Akuntansi Biaya',mode:'beli',total:48000,pay:'QRIS Instan UNNES',cod:'Gazebo Perpustakaan Pusat UNNES',slot:'15:30 WIB',st:'siap',otp:'3157'},{id:'NP-ORD-2026-7688',buyer:'Fikri Ardana',nim:'7101422077',book:'Akuntansi Biaya',mode:'beli',total:48000,pay:'COD (Bayar saat serah terima)',cod:'Kantin D4 FEB UNNES',slot:'09:00 WIB',st:'selesai',otp:'9046'}];
+const MY_L={id:'NP-2026-0877',title:'Akuntansi Biaya',author:'Mulyadi',fak:'FEB',matkul:'S1 Manajemen - Akuntansi Biaya',isbn:'',cond:91,note:'Mulus, ada tab rapi.',owner:{name:'Milena Jevanka',nim:'7211422012'},buy:48000,rent:16000,cod:'Kantin D4 FEB UNNES',photos:[],status:'approved',at:'1 Nov 2026'};
+const KEY='nesspages_state_v3';
+function fresh(){return{role:'pembeli',sellerOrders:[],payouts:[],user:{name:'Milena Jevanka',nim:'7211422012',wa:''},orders:[],listings:SEED_LIST.map(x=>({...x})),chats:{},draft:null}}
+let S;try{S=JSON.parse(localStorage.getItem(KEY))||fresh()}catch(e){S=fresh()}
+S.role=S.role||'pembeli';S.sellerOrders=S.sellerOrders||[];S.payouts=S.payouts||[];
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){toast('Penyimpanan browser penuh. Kurangi ukuran foto.',1)}};
+const isAdmin=()=>sessionStorage.getItem('np_admin')==='1';
+
+const listingToBook=l=>({id:l.id,fak:l.fak,title:l.title,author:l.author||'-',pub:'-',matkul:l.matkul||'-',sem:'-',buy:+l.buy||0,rent:+l.rent||0,orig:Math.round((+l.buy||+l.rent*4)*2.5),cond:+l.cond,lab:l.cond>=95?'Seperti Baru':l.cond>=90?'Mulus':'Layak Pakai',seller:{name:l.owner.name,nim:l.owner.nim,ang:'Mahasiswa UNNES',rt:5.0,tx:0},deposit:0,cod:l.cod,pages:'-',isbn:l.isbn||'-',prog:FAK[l.fak].full,note:l.note,noteT:'Catatan Kondisi dari Penjual',photos:l.photos||[],user:true});
+const allBooks=()=>BOOKS.concat(S.listings.filter(l=>l.status==='approved').map(listingToBook));
+const getBook=id=>allBooks().find(b=>b.id===id)||(S.listings.find(l=>l.id===id)&&listingToBook(S.listings.find(l=>l.id===id)));
+const grade=c=>c>=95?'A+ (Seperti Baru)':c>=90?'A (Sangat Layak)':c>=80?'B (Layak Pakai)':'C (Cukup)';
+const price=(b,mode,vc)=>{const sub=mode==='sewa'?b.rent:b.buy,v=VOUCH[vc],disc=v?Math.min(v.v,sub):0,dep=mode==='sewa'?(b.deposit||0):0,fee=2000;return{sub,fee,disc,dep,total:sub+fee-disc+dep}};
+const initials=n=>n.split(' ').map(x=>x[0]).slice(0,2).join('').toUpperCase();
+
+/* ========== visual builders ========== */
+function cover(b,s=10){const f=FAK[b.fak];const t=b.title.length>62?b.title.slice(0,60)+'…':b.title;const a=b.author.split(/[,&]/)[0].replace(/^(Prof\.|Dr\.)\s*/,'').trim();
+ return `<div class="cover" style="--s:${s}px;--c1:${f.c}"><i class="cv-top">${b.fak} UNNES</i><h4>${esc(t)}</h4><svg class="cv-ch" viewBox="0 0 40 16"><path d="M0 14 8 9 15 11 24 4 32 6 40 1" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/><path d="M0 14h40" stroke="#fff" stroke-opacity=".4"/></svg><span>${esc(a)}</span></div>`}
+function sceneInner(b,k,s){
+ if(k==='inside'){const ln=(n,hl)=>Array.from({length:n},(_,i)=>`<u class="${hl&&i===hl?'hl':''} ${i%4===3?'s':''}"></u>`).join('');return `<div class="open" style="--s:${s}px"><div class="pg"><u style="width:40%;background:var(--g3)"></u>${ln(11,4)}</div><div class="pg">${ln(12,7)}</div></div>`}
+ if(k==='spine'){const f=FAK[b.fak];const cs=[f.c,'#334155','#0f766e','#7c2d12'];return `<div class="spines" style="--s:${s}px">${cs.map((c,i)=>`<i style="--c:${c};height:${(14+i%3*2)}em"></i>`).join('')}</div>`}
+ if(k==='table'){return `<div class="tbl" style="--s:${s}px"><b>Tabel &amp; Ringkasan Bab</b><div>${'<i></i>'.repeat(20)}</div></div>`}
+ return cover(b,s);
+}
+function scene(b,k='cover',s=14,extra=''){
+ if(k&&k.src)return `<div class="scene ph ${extra}"><img src="${k.src}" alt="Foto kondisi buku"></div>`;
+ const real=k==='cover'&&!b.user?`<img class="real" src="images/${b.id}.jpg" alt="" onerror="this.remove()">`:'';
+ return `<div class="scene sc${hashStr(b.id)%3} ${extra}">${real}${sceneInner(b,k,s)}</div>`}
+
+function bookCard(b){const f=FAK[b.fak];const ph=b.photos&&b.photos[0];
+ return `<article class="bc"><div style="position:relative">${ph?scene(b,{src:ph}):scene(b,'cover',11)}<div class="tg"><span class="bdg" style="background:${f.bg};color:${f.c}">${b.fak} • ${esc(f.n.split(' ')[0])}</span><span class="bdg bgg">${ic('check',11,3)} Tersedia</span></div></div>
+ <div class="bd2"><div class="mk">${esc(b.matkul)} • ${esc(b.sem)}</div><h3>${esc(b.title)}</h3><div class="au">${esc(b.author.split(',')[0])} • Milik: ${esc(b.seller.name)} (${esc(b.seller.ang)})</div>
+ <div class="sm g b">${ic('check',13,3)} ${b.cond}% ${esc(b.lab)}</div>
+ <div class="pr"><div><small>Beli Hak Milik</small><b>${b.buy?rp(b.buy):'-'}</b></div><div class="o"><small>Opsi Sewa</small><b>${b.rent?rp(b.rent)+'/smt':'Tidak ada'}</b></div></div>
+ <div class="ac"><a class="btn bg" href="#/buku/${b.id}">${ic('eye',15)} Detail</a><a class="btn bp" href="#/checkout/${b.id}?mode=${b.rent?'sewa':'beli'}">${ic('bag',15)} Pesan / Sewa</a></div></div></article>`}
+
+/* ========== layout ========== */
+function renderHdr(){const n=S.orders.filter(o=>o.status==='aktif').length,r=location.hash||'#/',pj=S.role==='penjual',nm=S.sellerOrders.filter(o=>o.st!=='selesai').length;
+ const lk=(h,t,b)=>`<a href="#/${h}" class="${r.startsWith('#/'+h)?'on':''}">${t}${b?`<i>${b}</i>`:''}</a>`;
+ $('#hdr').innerHTML=`<div class="hd"><div><a class="logo" href="#/">${LOGO}<b class="xb">NessPages</b></a>
+ <form class="hs" data-on-submit="hsearch">${ic('search',16)}<input name="q" placeholder="Cari buku, penulis, atau mata kuliah..."></form>
+ <nav>${lk('katalog','Katalog')}${pj?lk('titip','Titip Jual')+lk('toko','Toko Saya',nm):lk('pesanan','Pesanan Saya',n)}${lk('bantuan','Bantuan')}</nav>
+ <div class="um ${UM?'show':''}"><button class="usr" data-act="umenu"><span><b>${esc(S.user.name)}</b><small>${pj?'Mode Penjual':'Mode Pembeli'} • ${esc(S.user.nim)}</small></span><i class="av">${initials(S.user.name)}</i></button>
+ <div class="pop"><div class="row" style="padding:6px 8px"><i class="av">${initials(S.user.name)}</i><div><b>${esc(S.user.name)}</b><div class="xs mut">NIM ${esc(S.user.nim)} • SSO Aktif</div></div></div>
+ <div class="xs b mut" style="padding:6px 8px 0">MASUK SEBAGAI</div><div class="seg"><button class="${pj?'':'on'}" data-act="role" data-r="pembeli">Pembeli</button><button class="${pj?'on':''}" data-act="role" data-r="penjual">Penjual</button></div>
+ ${pj?`<a href="#/toko">${ic('bag',15)} Toko Saya / Titip Jual Saya</a><a href="#/titip">${ic('upload',15)} Titip Buku Baru</a>`:`<a href="#/pesanan">${ic('bag',15)} Pesanan Saya</a><a href="#/katalog">${ic('book',15)} Cari, Beli &amp; Sewa Buku</a>`}
+ <a href="#/bantuan">${ic('chat',15)} Pusat Bantuan &amp; FAQ</a><a href="#/privasi">${ic('shield',15)} Kebijakan Privasi</a><hr style="border:0;border-top:1px solid var(--line);margin:6px 0"><a href="#/admin">${ic('lock',15)} Admin SIM (perlu sandi)</a></div></div></div></div>`}
+function renderFtr(){$('#ftr').innerHTML=`<div class="wrap"><div class="fg2"><div><div class="row" style="margin-bottom:12px"><span class="lg">NP</span><b style="color:#fff;font-size:17px">NessPages</b></div><p>Platform sirkulasi literatur akademik mandiri bagi mahasiswa Universitas Negeri Semarang. Mewujudkan kampus lestari bebas limbah kertas berlebihan.</p><span class="pill">● Terhubung Validasi SSO UNNES</span></div>
+ <div><h5>Navigasi Utama</h5><a href="#/">Beranda</a><a href="#/katalog">Katalog Matkul</a><a href="#/titip">Titip Jual</a><a href="#/bantuan">Bantuan &amp; FAQ</a><a href="#/admin">Admin SIM</a></div>
+ <div><h5>Titik Ambil &amp; Loker</h5><p>${ic('pin',13)} Gedung Perpustakaan Pusat UNNES Lt. 1, Gunungpati, Semarang</p><p>Loker BEM UNNES &amp; Kantin FEB</p><p>sirkulasi@nesspages.unnes.ac.id</p></div>
+ <div><h5>Kepatuhan PDP</h5><p>Dikelola mematuhi Undang-Undang Perlindungan Data Pribadi (UU No. 27/2022). Identitas mahasiswa, nomor induk, serta bukti transaksi terlindungi enkripsi.</p><a href="#/privasi" style="color:#6ee7b7">Kebijakan Privasi &amp; Data Pribadi →</a></div></div>
+ <div class="cp"><span>© 2026 NessPages UNNES. Hak Cipta Terpelihara untuk Civitas Akademika UNNES.</span><span>Inisiatif SIM Akademik • Ketentuan Layanan • <a href="#/bantuan">Bantuan Mahasiswa</a></span></div></div>`}
+
+/* ========== views ========== */
+const app=$('#app');
+const V={};
+
+V.home=()=>{
+ const trend=['b01','b03','b06','b07'].map(getBook);
+ app.innerHTML=`<section class="hero"><div class="wrap"><div><span class="eyb">Sirkulasi buku kampus UNNES</span><h1 style="margin-top:10px">Cari Buku Teks &amp; Modul Matkul UNNES <u>Tanpa Bikin Kantong Bolong.</u></h1><p>Beli, sewa, atau titipkan buku kuliah antarmahasiswa dengan identitas SSO tervalidasi, pembayaran escrow, dan serah terima di titik temu kampus.</p><div class="row"><a class="btn bp" href="#/katalog">Jelajahi Katalog</a><a class="btn bo" href="#/titip">Titip Jual Buku</a></div></div>
+ <div class="stack"><div class="cover" style="--s:15px;--c1:#d97706;left:8%;top:6%;transform:rotate(-8deg)"><i class="cv-top">FEB UNNES</i><h4>Manajemen</h4><span>Modul Kuliah</span></div><div class="cover" style="--s:16px;--c1:#0b7a4b;left:32%;top:0;transform:rotate(2deg);z-index:2"><i class="cv-top">UNNES</i><h4>Akuntansi</h4><span>Pengantar</span></div><div class="cover" style="--s:15px;--c1:#2563eb;left:58%;top:10%;transform:rotate(9deg)"><i class="cv-top">FIPP UNNES</i><h4>Ekonomi</h4><span>Dasar</span></div></div></div></section>
+ <section class="s"><div class="wrap"><div class="row sb"><div><h2 class="h2">Pilih Berdasarkan Fakultas</h2><div class="mut sm">Temukan modul dan buku spesifik sesuai rumpun fakultasmu di UNNES.</div></div><a class="g b sm" href="#/katalog">Lihat Semua Katalog →</a></div>
+ <div class="fgrid">${Object.entries(FAK).map(([k,f])=>`<a class="fk" href="#/katalog/${k}"><span class="n">${allBooks().filter(b=>b.fak===k).length} Buku</span><div class="fi" style="background:${f.bg};color:${f.c}">${k.slice(0,3)}</div><b style="color:${f.c}">${k}</b><b>${esc(f.n)}</b><small>${esc(f.ex)}</small></a>`).join('')}<a class="fk" href="#/katalog?q=skripsi"><div class="fi" style="background:#f1f5f9;color:#475569">TA</div><b>TINGKAT AKHIR</b><b>Literatur Skripsi &amp; Riset</b><small>SPSS, Metopen, Olah Data</small></a></div></div></section>
+ <section class="s"><div class="wrap"><span class="eyb">Laris manis UNNES</span><div class="row sb" style="margin-bottom:16px"><h2 class="h2">Buku Matkul Paling Dicari Minggu Ini</h2><a class="g b sm" href="#/katalog">Lihat Semua Katalog (${allBooks().length}) →</a></div><div class="bgrid c4">${trend.map(bookCard).join('')}</div></div></section>
+ <section class="s"><div class="wrap" style="text-align:center"><span class="eyb">Keamanan &amp; integritas kampus</span><h2 class="h2" style="margin:6px 0 6px">Ekosistem Sirkular &amp; Titik Temu Aman UNNES</h2><p class="mut" style="max-width:560px;margin:0 auto 22px">Dirancang khusus untuk memfasilitasi transaksi jujur antarsesama mahasiswa UNNES dengan jaminan identitas valid dan titik temu terpantau.</p>
+ <div class="bgrid" style="text-align:left">${[['shield','Verifikasi SSO & NIM Aktif','Semua akun penjual dan penyewa diverifikasi otomatis via portal SSO UNNES. Tidak ada akun bot atau penipuan dari luar lingkungan kampus.'],['lock','Jaminan Escrow Kampus','Pembayaran mahasiswa ditahan di sistem rekber aman hingga buku atau modul fisik telah diperiksa dan diterima langsung saat COD.'],['pin','Titik COD Terpantau CCTV','Lokasi resmi di Perpustakaan Pusat UNNES Lt. 1, GSG Graha Cendekia, Kantin FEB, atau Lobi FK yang aman, ramai, dan memiliki loker penyimpanan mandiri.']].map(x=>`<div class="card pad"><div class="okic" style="margin-bottom:12px">${ic(x[0],18)}</div><b>${x[1]}</b><p class="mut sm" style="margin-top:6px">${x[2]}</p></div>`).join('')}</div></div></section>
+ <section class="s"><div class="wrap"><div class="card two" style="background:linear-gradient(120deg,#065f3b,#0b7a4b 60%,#10b981);color:#fff;padding:34px;display:grid;grid-template-columns:1.3fr 1fr;gap:26px;align-items:center" ><div><span class="bdg" style="background:rgba(255,255,255,.18);color:#fff">UBAH RAK BUKU JADI SALDO</span><h2 style="font-size:28px;font-weight:800;margin:12px 0 8px;line-height:1.2">Punya Buku Semester Lalu yang Menumpuk di Kos? Titip Jualkan Sekarang!</h2><p style="opacity:.9;margin-bottom:18px">Bantu adik tingkatmu berhemat sambil mengembalikan uang saku. Tim NessPages membantu kurasi fisik, pemotretan modul, hingga proses serah terima di area kampus UNNES.</p><a class="btn" style="background:#fff;color:var(--g2)" href="#/titip">Mulai Titip Jual</a></div>
+ <div style="background:rgba(255,255,255,.12);border-radius:16px;padding:18px">${[['Rata-rata Terjual','3 - 5 Hari'],['Biaya Platform Mahasiswa','Gratis titip (Komisi 5% saat terjual)'],['Pencairan Dana','Instan via QRIS / Bank']].map(x=>`<div class="row sb" style="padding:9px 0;border-bottom:1px solid rgba(255,255,255,.15);font-size:13px"><span style="opacity:.85">${x[0]}</span><b style="text-align:right">${x[1]}</b></div>`).join('')}</div></div></div></section>`;
+};
+
+let cat={fak:'',q:'',tx:{beli:false,sewa:false},cond:0,max:450000,sort:'rel',page:1};
+V.katalog=(p,q)=>{
+ cat.fak=FAK[(p[1]||'').toUpperCase()]?p[1].toUpperCase():'';cat.q=q.get('q')||'';cat.page=1;
+ const f=cat.fak?FAK[cat.fak]:null;const count=k=>allBooks().filter(b=>b.fak===k).length;
+ app.innerHTML=`<div class="wrap"><div class="crumb">${ic('home',13)} Beranda / Katalog${f?` / <b>${esc(f.full)}</b>`:''}</div>
+ <div class="card pad" style="${f?`background:linear-gradient(120deg,${f.bg},#fff 70%)`:'background:linear-gradient(120deg,#ecfdf5,#fff 70%)'};margin-bottom:18px"><div class="row sb wr"><div style="max-width:640px"><span class="bdg" style="${f?`background:#fff;color:${f.c}`:'background:#fff;color:var(--g)'}">${f?esc(f.full.toUpperCase()):'KATALOG RESMI UNNES'}</span><h1 style="font-size:28px;font-weight:800;letter-spacing:-.5px;margin:8px 0 6px">${f?`Katalog Literatur ${esc(f.n)} ${cat.fak} UNNES`:'Katalog Literatur &amp; Modul 9 Fakultas UNNES'}</h1><p class="mut">Temukan buku teks wajib acuan dosen pengampu, panduan praktikum lab, hingga literatur tugas akhir dan catatan ujian yang telah lolos verifikasi kurasi SIM UNNES.</p></div><div class="card pad row" style="gap:14px"><span class="okic">${ic('book',18)}</span><div><b style="font-size:24px" id="tot">0</b><div class="xs mut">Buku &amp; Modul Terverifikasi Aktif UNNES</div></div></div></div>
+ <form class="row" style="margin-top:16px;gap:10px" data-on-submit="catq"><div class="in row" style="flex:1;gap:8px">${ic('search',16)}<input id="cq" style="flex:1;border:0;outline:0;background:none" placeholder="Cari judul, penulis, mata kuliah, atau nama pemilik..." value="${esc(cat.q)}"></div><button class="btn bp">Cari</button></form></div>
+ <div class="cl"><aside class="side"><div class="card pad"><div class="row sb"><b>Filter Terpadu</b><button class="sm b" style="color:var(--red)" data-act="catreset">Reset Semua</button></div>
+ <div class="b sm mut" style="margin:14px 0 4px">Rumpun Fakultas</div>
+ <label class="ck"><input type="radio" name="fk" value="" ${!cat.fak?'checked':''} data-on-change="catfak"> Semua Fakultas <em>${allBooks().length}</em></label>${Object.entries(FAK).map(([k,v])=>`<label class="ck"><input type="radio" name="fk" value="${k}" ${cat.fak===k?'checked':''} data-on-change="catfak"> ${k} - ${esc(v.n)} <em>${count(k)}</em></label>`).join('')}
+ <div class="b sm mut" style="margin:14px 0 4px">Model Transaksi</div><label class="ck"><input type="checkbox" data-on-change="cattx" value="beli"> Beli Putus</label><label class="ck"><input type="checkbox" data-on-change="cattx" value="sewa"> Sewa Semester</label>
+ <div class="b sm mut" style="margin:14px 0 4px">Kondisi Fisik</div><label class="ck"><input type="radio" name="cd" value="0" checked data-on-change="catcond"> Semua kondisi</label><label class="ck"><input type="radio" name="cd" value="95" data-on-change="catcond"> Seperti Baru (95%+)</label><label class="ck"><input type="radio" name="cd" value="80" data-on-change="catcond"> Layak Pakai (80%+)</label>
+ <div class="b sm mut" style="margin:14px 0 4px">Rentang Biaya <span class="g" id="mxl" style="float:right">s.d. ${rp(cat.max)}</span></div><input type="range" min="20000" max="450000" step="5000" value="${cat.max}" style="width:100%;accent-color:#0b7a4b" data-on-input="catmax"></div>
+ <div class="card pad" style="background:var(--mint)"><b class="row">${ic('pin',16)} Titik COD Kampus UNNES</b><p class="sm mut" style="margin:6px 0">Titik aman verifikasi penyerahan buku resmi kampus:</p><ul class="sm" style="padding-left:16px;line-height:1.9">${COD.slice(0,5).map(c=>`<li>${esc(c)}</li>`).join('')}</ul></div></aside>
+ <div><div class="row sb wr" style="margin-bottom:14px"><div><b style="font-size:16px" id="cnt"></b></div><div class="row"><span class="sm mut">Urutkan:</span><select class="sel" style="width:auto" data-on-change="catsort"><option value="rel">Relevansi Silabus Kuliah</option><option value="low">Harga Terendah</option><option value="high">Harga Tertinggi</option><option value="cond">Kondisi Terbaik</option><option value="new">Terbaru Diposting</option></select></div></div>
+ <div class="bgrid" id="grid"></div><div class="pg-n" id="pgn"></div>
+ <div class="card pad row sb wr" style="margin-top:26px;background:var(--mint)"><div><span class="eyb">Layanan antar mandiri &amp; loker buku</span><b style="display:block;font-size:16px;margin-top:4px">Spot COD Bebas Biaya Ongkir di 9 Rumpun Kampus UNNES</b></div><div class="row wr">${Object.keys(FAK).slice(0,5).map(k=>`<span class="bdg" style="background:${FAK[k].bg};color:${FAK[k].c}">${esc(FAK[k].cod.split(' ').slice(0,3).join(' '))}</span>`).join('')}</div></div></div></div></div>`;
+ catUpdate();
+};
+function catList(){let L=allBooks().filter(b=>(!cat.fak||b.fak===cat.fak)&&(!cat.q||(b.title+' '+b.author+' '+b.matkul+' '+b.seller.name+' '+FAK[b.fak].n+' '+b.prog).toLowerCase().includes(cat.q.toLowerCase()))&&b.cond>=cat.cond&&(cat.max>=450000||(b.buy||b.rent)<=cat.max)&&(!cat.tx.beli||b.buy)&&(!cat.tx.sewa||b.rent));
+ if(cat.sort==='low')L.sort((a,b)=>(a.buy||a.rent)-(b.buy||b.rent));if(cat.sort==='high')L.sort((a,b)=>(b.buy||b.rent)-(a.buy||a.rent));if(cat.sort==='cond')L.sort((a,b)=>b.cond-a.cond);if(cat.sort==='new')L.reverse();return L}
+function catUpdate(){const L=catList(),per=9,pages=Math.max(1,Math.ceil(L.length/per));if(cat.page>pages)cat.page=1;const sl=L.slice((cat.page-1)*per,cat.page*per);
+ const g=$('#grid');if(!g)return;g.innerHTML=sl.length?sl.map(bookCard).join(''):`<div class="empty card" style="grid-column:1/-1"><b>Belum ada buku yang cocok</b><p class="sm">Coba ubah filter atau kata kunci pencarian.</p></div>`;
+ $('#cnt').textContent=`${L.length} Koleksi Unggulan`;$('#tot').textContent=L.length;
+ $('#pgn').innerHTML=pages>1?Array.from({length:pages},(_,i)=>`<button class="${i+1===cat.page?'on':''}" data-act="catpage" data-p="${i+1}">${i+1}</button>`).join(''):''}
+
+V.buku=(p)=>{
+ const b=getBook(p[1]);if(!b){app.innerHTML=`<div class="wrap empty"><h2>Buku tidak ditemukan</h2><a class="btn bp" href="#/katalog" style="margin-top:14px">Ke Katalog</a></div>`;return}
+ const f=FAK[b.fak];let mode=b.buy?'beli':'sewa';V._mode=mode;V._gal=0;V._b=b;
+ const views=galViews(b);
+ const rel=allBooks().filter(x=>x.fak===b.fak&&x.id!==b.id).slice(0,2);
+ const items=condItems(b);
+ app.innerHTML=`<div class="wrap"><div class="crumb"><a href="#/">Beranda</a> / <a href="#/katalog/${b.fak}">Katalog ${b.fak}</a> / <b>Detail Buku</b></div>
+ <div class="dl"><div><div class="mainimg"><span class="bdg bgb" style="top:12px;left:12px">Katalog Resmi ${b.fak} UNNES</span><span class="bdg bgg" style="top:12px;left:190px">${ic('check',11,3)} Terverifikasi Tim Kampus</span><div id="gal"></div><span class="zoom">${ic('search',13)} 100% Foto Real Fisik</span></div>
+ <div class="thumbs" id="thumbs"></div>
+ <div class="okbox" style="margin-top:16px"><span class="okic">${ic('check',18)}</span><div><b>Inspeksi Kurator NessPages UNNES <span class="bdg bgg">LULUS CEK</span></b><p class="sm mut" style="margin-top:4px">Unit telah diinspeksi langsung di Locker Sirkulasi BEM ${b.fak} UNNES. Keaslian cetakan, kelengkapan halaman, dan jilidan terkonfirmasi akurat.</p></div></div>
+ <div class="card pad" style="margin-top:16px"><div class="row sb" style="margin-bottom:6px"><b style="font-size:16px">${ic('shield',16)} Transparansi Kondisi Fisik</b><span class="bdg bgg">GRADE ${grade(b.cond)}</span></div><p class="sm mut" style="margin-bottom:14px">Setiap unit yang beredar diwajibkan melewati deklarasi kondisi fisik berstandar akurasi tinggi:</p>${items.map(i=>`<div class="ci ${i.ok?'':'w'}"><span class="d">${i.ok?ic('check',13,3):ic('alert',13)}</span><div><b>${esc(i.t)}</b><span>${esc(i.d)}</span></div></div>`).join('')}<div class="row sb xs mut" style="margin-top:10px"><span>${ic('clock',12)} Riwayat pakai: ${b.user?'Baru dititipkan':'2 Semester'}</span><code>ID: #${b.id.toUpperCase()}-2408</code></div></div></div>
+ <div style="display:grid;gap:16px"><div class="card pad"><div class="row wr" style="gap:8px"><span class="bdg" style="background:${f.bg};color:${f.c}">${esc(f.full.toUpperCase())}</span><span class="bdg">ISBN ${esc(b.isbn)}</span><span class="bdg bgg">● Siap COD Area UNNES</span></div>
+ <h1 style="font-size:30px;line-height:1.15;font-weight:800;letter-spacing:-.6px;margin:12px 0 6px">${esc(b.title)}</h1><p class="mut sm">${esc(b.pack||'Buku teks acuan perkuliahan semester '+b.sem)}</p>
+ <div class="row sb wr" style="margin:12px 0"><span class="sm">${ic('book',14)} <b>${esc(b.author)}</b></span><span class="sm mut">Penerbit: ${esc(b.pub)}</span></div>
+ <div class="info"><div class="row sb wr"><span class="sm">${ic('tag',13)} Program Studi:<br><b>${esc(b.prog||f.full)}</b></span><span class="sm">${ic('clock',13)} Rekomendasi Semester:<br><b>${esc(b.sem)}</b></span></div><div class="sm">Mata Kuliah Acuan: <b>${esc(b.matkul)}</b></div></div></div>
+ <div class="card pad slr"><span class="pic">${initials(b.seller.name)}</span><div style="flex:1"><b>${esc(b.seller.name)} <span class="bdg bgg">Mahasiswa Aktif</span></b><div class="sm mut">${esc(b.seller.ang)} • ${ic('star',12)} ${b.seller.rt} (${b.seller.tx} sirkulasi sukses)</div></div><div class="xs mut" style="text-align:right">RESPON CHAT<br><b class="g">● &lt; 5 Menit</b></div></div>
+ <div class="card pad"><div class="row sb" style="margin-bottom:12px"><b style="font-size:16px">Pilih Model Transaksi</b><span class="g sm b">${ic('shield',14)} Proteksi Rekber Escrow</span></div>
+ <div class="fg ${b.buy&&b.rent?'g2':''}" id="opts"></div><div id="est" style="margin-top:12px"></div>
+ <div class="fg g2" style="margin-top:14px"><a class="btn bp full" id="go">${ic('bag',16)} Ambil / Sewa Sekarang</a><a class="btn bo full" href="#/chat/${b.id}">${ic('chat',16)} Chat Pemilik</a></div></div>
+ ${rel.length?`<div class="card pad"><div class="row sb" style="margin-bottom:12px"><b>Sering Diambil Bersama</b><a class="g sm b" href="#/katalog/${b.fak}">Semua Literatur ${b.fak}</a></div><div class="fg g2">${rel.map(r=>`<a class="row card pad" style="gap:10px;box-shadow:none" href="#/buku/${r.id}"><div style="flex:none">${cover(r,5)}</div><div><span class="xs b" style="color:${f.c}">${esc(r.matkul.slice(0,26))}</span><div class="sm b" style="line-height:1.25">${esc(r.title.slice(0,40))}${r.title.length>40?'…':''}</div><div class="sm b g">${rp(r.buy||r.rent)} <span class="mut xs">/${r.buy?'Beli':'Sewa'}</span></div></div></a>`).join('')}</div></div>`:''}</div></div></div>`;
+ drawGallery();drawOptions();
+};
+function galViews(b){const v=[{k:'cover',l:'Sampul Boxset'},{k:'inside',l:'Halaman Dalam'},{k:'spine',l:'Punggung Buku'},{k:'table',l:'Buku Tabel'}];(b.photos||[]).forEach((s,i)=>v.unshift({k:{src:s},l:'Foto Penjual '+(i+1)}));return v}
+function condItems(b){const it=[{ok:1,t:'Halaman Lengkap 100%',d:'Semua halaman dan lembar ringkasan tabel utuh tanpa ada lembaran hilang maupun robek.'},{ok:1,t:'Jilidan Hardcover Kokoh & Bebas Tekukan Fatal',d:'Punggung buku rapi, lem jilid pabrik masih sangat rekat dan kokoh.'}];if(b.note)it.push({ok:0,t:b.noteT||'Catatan Penjual',d:b.note});it.push({ok:1,t:b.cond>=95?'Sampul Seperti Baru':'Sampul Terawat',d:'Kondisi sampul sesuai grade yang tertera dan telah dicek kurator.'});return it}
+function drawGallery(){const b=V._b,v=galViews(b);$('#gal').innerHTML=scene(b,v[V._gal].k,24);$('#thumbs').innerHTML=v.map((x,i)=>`<button class="${i===V._gal?'on':''}" data-act="gal" data-i="${i}">${scene(b,x.k,6)}<span>${x.l}</span></button>`).join('')}
+function drawOptions(){const b=V._b,m=V._mode,o=[];
+ if(b.buy)o.push(`<label class="opt ${m==='beli'?'on':''}" data-act="mode" data-m="beli"><input type="radio" name="md"><span class="rb">${m==='beli'?ic('check',12,3):''}</span><span class="bdg" style="background:#fff">BELI PUTUS</span><div class="pp">${rp(b.buy)}</div><s>Toko Baru: ${rp(b.orig)}</s> <b class="g xs">(Hemat ${Math.round((1-b.buy/b.orig)*100)}%)</b><p class="xs mut" style="margin-top:6px">Hak milik abadi. Sangat direkomendasikan untuk inventaris klinik &amp; koas.</p></label>`);
+ if(b.rent)o.push(`<label class="opt ${m==='sewa'?'on':''}" data-act="mode" data-m="sewa"><input type="radio" name="md"><span class="rb">${m==='sewa'?ic('check',12,3):''}</span><span class="bdg bga">SEWA 1 SEMESTER</span><div class="pp">${rp(b.rent)}<span class="sm mut"> / 6 Bulan</span></div>${b.deposit?`<s>+ Jaminan Deposit: ${rp(b.deposit)} (100% kembali)</s>`:'<s>Tanpa deposit (disubsidi kampus)</s>'}<p class="xs mut" style="margin-top:6px">Sangat hemat untuk masa blok praktikum dan satu semester berjalan.</p></label>`);
+ $('#opts').innerHTML=o.join('');const pr=price(b,m,'MABA2025');
+ $('#est').innerHTML=`<div class="info" style="margin:0;grid-template-columns:1fr auto;align-items:center"><span class="sm">${ic('shield',14)} Rekening Bersama: Dana diteruskan ke penjual setelah buku dicek fisik.</span><span class="sm" style="text-align:right">Estimasi Pembayaran<br><b style="font-size:17px">${rp(pr.sub+pr.dep)}</b> <span class="xs mut">(${m==='sewa'?'Sewa'+(b.deposit?' + Deposit':''):'Harga beli'}, belum termasuk biaya platform &amp; voucher)</span></span></div>`;
+ $('#go').setAttribute('href',`#/checkout/${b.id}?mode=${m}`)}
+
+V.checkout=(p,q)=>{
+ const b=getBook(p[1]);if(!b){location.hash='#/katalog';return}
+ let mode=q.get('mode')||(b.rent?'sewa':'beli');if(mode==='sewa'&&!b.rent)mode='beli';if(mode==='beli'&&!b.buy)mode='sewa';
+ V._co={b,mode,cod:b.cod||COD[0],day:0,slot:SLOTS[1],pay:'QRIS Instan UNNES',vc:'MABA2025'};
+ const days=[0,1,2].map(i=>{const d=new Date(Date.now()+i*864e5);return(i===0?'Hari ini':i===1?'Besok':'Lusa')+' ('+d.toLocaleDateString('id-ID',{weekday:'short',day:'numeric',month:'short'})+')'});V._co.days=days;
+ app.innerHTML=`<div class="wrap" style="max-width:1100px"><div class="crumb"><a href="#/buku/${b.id}">← Kembali ke Detail</a> / <b>Checkout &amp; Jadwal Serah Terima</b></div>
+ <div class="card pad steps" id="stp" style="margin-bottom:18px"></div>
+ <div class="co"><div style="display:grid;gap:16px">
+ <div class="card pad" data-on-input="idlive"><div class="row sb"><div class="sec-t" style="margin:0">1. Identitas Pemesan (SSO UNNES)</div><span class="bdg bga" id="idb">Belum dikonfirmasi</span></div><p class="xs mut" style="margin:4px 0 14px">Ketik sendiri nama lengkap dan NIM kamu sebagai konfirmasi identitas sebelum memesan.</p>
+ <div class="fg g2"><div><label class="l">Nama Lengkap Mahasiswa</label><input class="in" id="idn" autocomplete="off" placeholder="Ketik nama lengkap sesuai KTM"><div class="err" id="idnerr"></div></div><div><label class="l">NIM</label><input class="in" id="idm" inputmode="numeric" maxlength="12" autocomplete="off" placeholder="Contoh: 7211422012"><div class="err" id="idmerr"></div></div></div>
+ <div class="fg g2" style="margin-top:14px"><div><label class="l">Status Akademik</label><select class="sel" id="ids"><option value="">Pilih status</option><option>Aktif S1</option><option>Aktif D3</option><option>Aktif S2</option></select></div><div><label class="l">Fakultas</label><select class="sel" id="idf"><option value="">Pilih fakultas</option>${Object.entries(FAK).map(([k,f])=>`<option value="${k}">${k} - ${esc(f.n)}</option>`).join('')}</select></div></div>
+ <div style="margin-top:14px"><label class="l">Nomor WhatsApp Aktif (Koordinasi COD)</label><input class="in" id="wa" placeholder="0812-3456-7890" inputmode="tel"><div class="err" id="waerr"></div><div class="xs mut">Notifikasi nomor tiket dan foto verifikasi buku akan dikirim melalui WhatsApp Bot NessPages.</div></div></div>
+ <div class="card pad"><div class="sec-t">2. Titik COD, Jadwal &amp; Pembayaran</div><label class="l">Titik temu resmi</label>
+ <div id="codl">${COD.map((c,i)=>`<label class="rd ${c===V._co.cod?'on':''}" data-act="cod" data-v="${esc(c)}"><input type="radio" name="cod" ${c===V._co.cod?'checked':''}><div><b class="sm">${esc(c)}</b><div class="xs mut">${esc(CODDESC[c]||'Titik aman area kampus UNNES, ramai dan terpantau.')}${c===b.cod?' <span class="bdg bgg">Rekomendasi penjual</span>':''}</div></div></label>`).join('')}</div>
+ <div class="fg g2" style="margin-top:14px"><div><label class="l">Hari serah terima</label><select class="sel" id="day">${days.map((d,i)=>`<option value="${i}">${d}</option>`).join('')}</select></div><div><label class="l">Metode pembayaran</label><select class="sel" id="pay">${PAYOPTS}</select></div></div>
+ <label class="l" style="margin-top:14px">Slot jam</label><div class="slots" id="slots">${SLOTS.map(s=>`<button type="button" class="${s===V._co.slot?'on':''}" data-act="slot" data-v="${s}">${s}</button>`).join('')}</div></div>
+ <div class="card pad"><div class="sec-t">3. Catatan Khusus Titik Temu</div><p class="xs mut" style="margin-bottom:8px">Tulis ciri fisik atau instruksi spesifik agar mudah saling mengenali di titik kumpul.</p><textarea class="ta" id="note" maxlength="200" placeholder="Contoh: Ketemu pas jam istirahat dzuhur di teras depan perpus pusat. Saya pakai jaket almamater UNNES kuning ransel navy." data-on-input="notecnt"></textarea><div class="row sb xs mut"><span>Tips: Sebutkan warna pakaian atau bangku spesifik tempat duduk.</span><span id="nc">0/200 karakter</span></div></div></div>
+ <div style="display:grid;gap:16px;position:sticky;top:76px"><div class="card pad"><div class="sec-t" style="margin-bottom:10px">${ic('bag',16)} Ringkasan Pesanan</div><div class="row card pad" style="box-shadow:none;gap:12px"><div style="flex:none">${cover(b,5)}</div><div style="flex:1"><div class="xs"><span class="bdg bga">${b.fak} UNNES</span> <span class="bdg bgg" id="mtag"></span></div><b class="sm" style="line-height:1.25;display:block;margin:4px 0">${esc(b.title)}</b><span class="xs mut">Pemilik: ${esc(b.seller.name)} (${esc(b.seller.ang)})</span></div></div>
+ ${b.buy&&b.rent?`<div class="tabs" style="margin:12px 0;width:100%"><button style="flex:1" id="mb" data-act="comode" data-m="beli">Beli Putus</button><button style="flex:1" id="ms" data-act="comode" data-m="sewa">Sewa 1 Semester</button></div>`:''}
+ <div id="sum" style="margin-top:8px"></div>
+ <div class="row" style="margin-top:10px"><input class="in" id="vc" placeholder="Kode voucher (cth: MABA2025)" value="MABA2025" style="text-transform:uppercase"><button class="btn bg" data-act="vc">Pakai</button></div><div class="err" id="vce" style="color:var(--g)"></div></div>
+ <div class="card pad"><button class="btn bp full" data-act="pay" style="padding:14px">Konfirmasi Pesanan &amp; Buat Janji COD</button><div class="okbox" style="margin-top:12px;padding:12px"><span class="okic" style="width:28px;height:28px">${ic('shield',14)}</span><p class="xs"><b>Garansi Protokol Escrow:</b> Transaksi Anda 100% aman, dilindungi penampung resmi NessPages. Uang baru diteruskan ke pemilik setelah Anda memverifikasi fisik buku saat COD di kampus UNNES.</p></div></div></div></div></div>`;
+ drawSum();drawStp(false);
+};
+function drawSum(){const c=V._co,pr=price(c.b,c.mode,c.vc),v=VOUCH[c.vc];
+ $('#sum').innerHTML=`<div class="sumr"><span class="mut">Subtotal Item Literasi (${c.mode==='sewa'?'Sewa':'Beli'})</span><b>${rp(pr.sub)}</b></div><div class="sumr"><span class="mut">Biaya Platform Mahasiswa</span><b>${rp(pr.fee)}</b></div>${pr.dep?`<div class="sumr"><span class="mut">Deposit Jaminan (dikembalikan)</span><b>${rp(pr.dep)}</b></div>`:''}${v?`<div class="sumr"><span class="g">${ic('tag',13)} ${v.l}</span><b class="g">-${rp(pr.disc)}</b></div>`:''}<div class="tot"><div><small class="xs mut b">TOTAL TAGIHAN</small><div class="xs mut">${pr.dep?'Sudah termasuk deposit jaminan':'Termasuk biaya platform'}</div></div><b>${rp(pr.total)}</b></div>`;
+ $('#mtag').textContent=c.mode==='sewa'?'SEWA 1 SEMESTER':'BELI PUTUS';
+ const mb=$('#mb'),ms=$('#ms');if(mb){mb.className=c.mode==='beli'?'on':'';ms.className=c.mode==='sewa'?'on':''}}
+
+function qrSvg(seed,size=180){const n=25,r=(()=>{let x=hashStr(seed)+7;return()=>(x=(x*1103515245+12345)&0x7fffffff)/0x7fffffff})();let rc='';const fin=(x,y)=>(x<7&&y<7)||(x>n-8&&y<7)||(x<7&&y>n-8);
+ for(let y=0;y<n;y++)for(let x=0;x<n;x++){let on;if(fin(x,y)){const lx=x%(n-7<x?n-7:7),ly=y>n-8?y-(n-7):y;const ax=x<7?x:x-(n-7),ay=y<7?y:y-(n-7);on=ax===0||ax===6||ay===0||ay===6||(ax>=2&&ax<=4&&ay>=2&&ay<=4)}else on=r()>.52;if(on)rc+=`<rect x="${x}" y="${y}" width="1" height="1"/>`}
+ return `<svg viewBox="0 0 ${n} ${n}" width="${size}" height="${size}" shape-rendering="crispEdges" style="background:#fff;padding:8px;border-radius:12px;border:1px solid var(--line)">${rc}</svg>`}
+
+V.sukses=(p)=>{const o=S.orders.find(x=>x.id===p[1]);if(!o){location.hash='#/pesanan';return}const b=getBook(o.bookId)||{title:'(buku dihapus)',author:'-',pub:'-',fak:'FEB',seller:{name:'-',nim:'-',ang:''},isbn:'-',cond:0};
+ app.innerHTML=`<div class="wrap" style="max-width:1100px"><div class="crumb">Katalog ${b.fak} › Checkout Escrow › <b>Konfirmasi #${o.id}</b></div>
+ <div class="card pad row sb wr" style="background:linear-gradient(120deg,#d1fae5,#fff 60%)"><div class="row" style="gap:16px"><span class="okic" style="width:54px;height:54px;border-radius:16px">${ic('check',28,3)}</span><div><span class="bdg bgg">DANA DIAMANKAN REKENING BERSAMA</span> <span class="bdg bgb">QRIS UNNES Pay Terverifikasi</span><h1 style="font-size:28px;font-weight:800;margin:6px 0 2px">Pesanan Berhasil Dibuat &amp; Escrow Terkunci</h1><p class="mut sm">Uang Anda sebesar <b>${rp(o.total)}</b> (${o.mode==='sewa'?'Sewa 1 Semester':'Beli Putus'}${o.dep?' + Jaminan Deposit':''}) aman di sistem NessPages dan baru diteruskan ke penjual setelah buku Anda terima &amp; periksa.</p></div></div><div class="card pad" style="box-shadow:none;text-align:right"><div class="xs mut b">ID TRANSAKSI RESMI</div><b class="g" style="font-size:18px">#${o.id}</b><div class="xs mut">Tercatat: ${o.at}</div></div></div>
+ <div class="co" style="margin-top:18px"><div style="display:grid;gap:16px"><div class="card pad"><div class="sec-t">${ic('book',16)} Rincian Referensi Akademik</div><div class="row" style="gap:16px;align-items:flex-start"><div style="flex:none">${cover(b,8)}</div><div><b style="font-size:17px">${esc(b.title)}</b><p class="sm mut">${esc(b.author)}<br>Penerbit ${esc(b.pub)} • ISBN ${esc(b.isbn)}</p><div class="row wr" style="margin:8px 0"><span class="bdg bga">${o.mode==='sewa'?'SEWA 1 SEMESTER (6 BULAN)':'BELI PUTUS'}</span><span class="bdg bgg">${ic('check',11,3)} Kondisi ${b.cond}% Mulus</span></div><div class="row"><span class="pic" style="width:34px;height:34px;font-size:13px">${initials(b.seller.name)}</span><div class="sm"><b>${esc(b.seller.name)}</b><div class="xs mut">NIM ${esc(b.seller.nim)} • ${esc(b.seller.ang)}</div></div></div></div></div></div>
+ <div class="card pad"><div class="row sb"><b style="font-size:16px">${ic('shield',16)} Mekanisme Rekening Bersama Escrow NessPages</b><span class="bdg bgg">UU PDP &amp; Perlindungan Kampus</span></div><div class="fg g3" style="margin-top:14px">${[['Dana Terkunci Aman','Pembayaran '+rp(o.total)+' tersimpan di rekening penampung resmi NessPages SIM.','SELESAI','dn'],['Temu COD & Cek Fisik','Bertemu di '+o.cod+'. Periksa kelengkapan dan kondisi buku.','SEDANG BERJALAN','cu'],['Lepas Dana ke Penjual','Scan QR / masukkan OTP serah terima. Dana otomatis diteruskan ke saldo seller.','MENUNGGU KONFIRMASI','']].map((x,i)=>`<div class="ts ${x[3]}" style="border:1px solid var(--line);margin:0"><span class="bdg ${i==0?'bgg':''}" style="margin-bottom:6px">${i+1}</span><b class="sm">${x[0]}</b><span>${x[1]}</span><div class="xs b ${x[3]==='dn'?'g':'mut'}" style="margin-top:6px">${x[2]}</div></div>`).join('')}</div>
+ <div class="okbox" style="margin-top:14px;padding:12px"><p class="sm"><b>Jaminan 100% Pengembalian Dana:</b> Jika kondisi buku tidak sesuai deskripsi saat COD (ada bab hilang / basah), Anda berhak menolak serah terima dan saldo langsung kembali ke akun Anda tanpa potongan biaya.</p></div></div>
+ <div class="card pad"><div class="row sb"><b style="font-size:16px">Rincian Pembayaran Escrow</b><span class="bdg bgg">Status: LUNAS</span></div><div class="sumr"><span class="mut">${o.mode==='sewa'?'Sewa Modul (1 Semester / 6 Bulan)':'Beli Putus'}</span><b>${rp(o.sub)}</b></div><div class="sumr"><span class="mut">Biaya Platform Mahasiswa</span><b>${rp(o.fee)}</b></div>${o.disc?`<div class="sumr"><span class="g">Voucher ${o.voucher}</span><b class="g">-${rp(o.disc)}</b></div>`:''}${o.dep?`<div class="sumr"><span class="mut">Deposit Jaminan</span><b>${rp(o.dep)}</b></div>`:''}<div class="sumr"><span class="mut">Metode Pembayaran</span><b>${esc(o.pay)} (Lunas Terverifikasi)</b></div><div class="tot"><div><b style="font-size:14px;color:var(--ink)">Total Dana Ditampung</b></div><b>${rp(o.total)}</b></div></div></div>
+ <div style="display:grid;gap:16px;align-content:start"><div class="card" style="overflow:hidden"><div style="background:var(--g);color:#fff;padding:14px 18px" class="row sb"><b>${ic('pin',16)} Tiket Serah Terima COD UNNES</b><span class="bdg" style="background:rgba(255,255,255,.2);color:#fff">Verifikasi 2 Arah</span></div><div class="pad"><div class="info" style="margin-top:0"><span class="xs mut b">LOKASI PERTEMUAN RESMI</span><b>${esc(o.cod)}</b><span class="sm mut">${esc(CODDESC[o.cod]||'Titik aman area kampus UNNES.')}</span></div>
+ <div class="info" style="grid-template-columns:1fr auto;align-items:center"><div><span class="xs mut b">SLOT JADWAL SERAH TERIMA TERPILIH</span><br><b>${esc(o.slot)} (${esc(o.day)})</b></div>${ic('clock',22)}</div>
+ <div class="xs mut b" style="text-align:center">KODE OTP SERAH TERIMA PEMBELI</div><div class="otp" style="margin:6px 0 10px">${o.otp}</div><p class="xs mut" style="text-align:center">Sebutkan kode 4 digit ini ke seller <b>hanya setelah</b> Anda menerima dan memeriksa buku secara langsung.</p>
+ <div class="row" style="justify-content:center;margin-top:12px">${qrSvg(o.id,110)}<div class="xs mut">QR Handover Cepat<br>Penjual dapat memindai langsung menggunakan kamera HP.</div></div></div></div>
+ <div class="card pad"><b>Langkah Selanjutnya</b><div class="fg" style="margin-top:12px"><a class="btn bp full" href="#/pesanan">Pantau Status di Pesanan Saya</a><a class="btn bo full" href="#/chat/${o.bookId}">${ic('chat',15)} Chat Penjual via DM NessPages</a><div class="fg g2"><button class="btn bg" data-act="pdf" data-id="${o.id}">${ic('dl',14)} Unduh Bukti</button><a class="btn bg" href="#/">${ic('home',14)} Beranda</a></div></div></div></div></div>
+ <div class="card pad" style="margin-top:18px;background:#f4f8f6"><b>${ic('shield',16)} Panduan Aman Transaksi COD Kampus UNNES</b><div class="fg g3" style="margin-top:12px">${[['Cek Kondisi Fisik Dulu','Pastikan setiap halaman, bab penting, serta tabel bagian modul masih terbaca jelas tanpa ada lembar yang robek.'],['Rahasiakan Kode OTP','Jangan berikan kode OTP 4-digit atau menunjukkan QR Code kepada siapapun sebelum barang benar-benar Anda pegang di tangan.'],['Pilih Titik Terbuka','Selalu lakukan transaksi di area ramai yang direkomendasikan seperti Kantin FEB, Perpustakaan Pusat, atau Lobi Fakultas.']].map(x=>`<div><b class="sm">${x[0]}</b><p class="xs mut">${x[1]}</p></div>`).join('')}</div></div></div>`};
+
+let ptab='buku';
+V.pesanan=(p,q)=>{ptab='buku';
+ const os=S.orders.slice().reverse(),ls=S.listings.filter(l=>l.owner&&l.owner.nim===S.user.nim);const act=S.orders.filter(o=>o.status==='aktif').length;
+ app.innerHTML=`<div class="wrap" style="max-width:1100px"><div class="crumb">${ic('home',13)} Beranda › Pesanan Saya › <b>Status Transaksi Aktif</b></div>
+ <div class="row sb wr" style="margin-bottom:16px"><div><h1 style="font-size:30px;font-weight:800;letter-spacing:-.6px">Pesanan &amp; Penawaran Saya <span class="bdg bgg">● Sistem Aktif</span></h1><p class="mut">Pantau alur status pesanan buku kuliah dan penawaran titip jual Anda secara transparan dan realtime di area kampus UNNES.</p></div><div class="row"><span class="card pad sm" style="padding:10px 14px"><b>${act}</b> Pesanan Berjalan</span><span class="card pad sm" style="padding:10px 14px"><b>${ls.length}</b> Titip Jual</span></div></div>
+ <div class="banner" style="margin-bottom:18px">${ic('shield',26)}<div style="flex:1"><b style="font-size:16px">Escrow NessPages Proteksi 100% Aktif</b><div class="sm" style="opacity:.9">Dana transaksi Anda terenkripsi aman di rekening penampung SIM Akademik UNNES hingga serah terima fisik tervalidasi via PIN OTP.</div></div><span class="bdg" style="background:rgba(255,255,255,.2);color:#fff">${ic('lock',11)} Jaminan Refund Penuh jika Tidak Sesuai</span></div>
+ <div class="tabs" style="margin-bottom:18px"><button class="${ptab==='buku'?'on':''}" data-act="ptab" data-t="buku">Pesanan Buku Saya (${os.length})</button></div>
+ <div id="pbody">${ptab==='buku'?(os.length?os.map(orderCard).join(''):`<div class="card empty"><b>Belum ada pesanan</b><p class="sm" style="margin:6px 0 14px">Cari buku kuliahmu dan buat janji COD pertamamu.</p><a class="btn bp" href="#/katalog">Jelajahi Katalog</a></div>`):listingsTab(ls)}</div></div>`};
+const STEPS=[['Pembayaran Escrow Terkonfirmasi','Dana sukses dialokasikan ke rekening escrow terenkripsi SIM NessPages.'],['Menunggu Konfirmasi Jadwal & Persiapan Fisik Penjual','Penjual menerima notifikasi WhatsApp bot NessPages & SIM Akademik, lalu menyiapkan buku fisik menuju titik COD.'],['Serah Terima Fisik di Titik COD','Pertemuan COD kampus. Periksa integritas halaman dan sampul, lalu sebutkan kode OTP untuk validasi fisik.'],['Transaksi Selesai & Pencairan Saldo ke Penjual','Setelah kode OTP diverifikasi sistem, dana escrow diteruskan ke akun penampung penjual.']];
+function orderCard(o){const b=getBook(o.bookId)||{title:'(Buku dihapus)',fak:'FEB',author:'-',cond:0,seller:{name:'-',nim:'-',rt:0,tx:0},lab:''};const st=o.status==='batal'?'batal':o.status==='sengketa'?'sengketa':o.stage>=5?'selesai':'aktif';
+ const stg=st==='aktif'?o.stage:o.stage;
+ return `<div class="co" style="margin-bottom:26px"><div class="card pad"><div class="row sb wr"><b class="g" style="font-size:16px">#${o.id} <span class="xs mut" style="font-weight:500">• ${o.at}</span></b><div class="row"><span class="bdg bga">${o.mode==='sewa'?'Sewa 1 Semester':'Beli Putus'}</span><span class="bdg ${st==='batal'?'bgr':st==='sengketa'?'bga':'bgg'}">${st==='batal'?'Dibatalkan (refund)':st==='sengketa'?'Sengketa (dana ditahan)':st==='selesai'?'Selesai':'Escrow Lunas ('+rp(o.total)+')'}</span></div></div>
+ <div class="row" style="gap:16px;margin:16px 0;align-items:flex-start"><div style="flex:none">${cover(b,7)}</div><div style="flex:1"><span class="bdg" style="background:${FAK[b.fak].bg};color:${FAK[b.fak].c}">${b.fak}</span><h3 style="font-size:18px;font-weight:800;margin:4px 0"><a href="#/buku/${o.bookId}">${esc(b.title)}</a></h3><div class="sm mut">${esc(b.author.split(',')[0])}</div><div class="sm g b" style="margin:4px 0">${ic('check',13,3)} Kondisi ${b.cond}% ${esc(b.lab)}</div><div class="tot" style="margin-top:6px"><div><small class="xs mut b">TOTAL PEMBAYARAN TERPROTEKSI</small><br><b>${rp(o.total)}</b></div><span class="bdg bgb">${ic('qr',11)} QRIS UNNES Terkonfirmasi</span></div></div></div>
+ <div class="fg g2"><div class="info" style="margin:0"><div class="row"><span class="pic" style="width:38px;height:38px;font-size:13px">${initials(b.seller.name)}</span><div><b class="sm">${esc(b.seller.name)}</b><div class="xs mut">NIM ${esc(b.seller.nim)} • ${ic('star',11)} ${b.seller.rt}</div></div></div></div><div class="info" style="margin:0"><b class="sm">${ic('pin',13)} ${esc(o.cod)}</b><div class="xs mut">${esc(o.day)} • ${esc(o.slot)}</div></div></div>
+ ${o.note?`<div class="info" style="margin-top:12px"><span class="xs mut b">CATATAN KHUSUS TITIK TEMU (DARI PEMESAN)</span><i class="sm">"${esc(o.note)}"</i></div>`:''}
+ <div style="margin-top:20px"><div class="row sb" style="margin-bottom:12px"><b style="font-size:16px">Progres Transaksi Kampus Realtime</b></div><div class="tl">${STEPS.map((s,i)=>{const n=i+1,done=st==='selesai'||n<stg,cu=st==='aktif'&&n===stg;return `<div class="ts ${done?'dn':cu?'cu':''}"><span class="dt">${done?ic('check',16,3):n}</span><b class="sm">${n}. ${s[0]} ${cu?'<span class="bdg bgg">SEDANG BERJALAN</span>':''}</b><span>${s[1]}</span></div>`}).join('')}</div></div></div>
+ <div style="display:grid;gap:16px;align-content:start"><div class="card pad"><b>Opsi Tindakan Pesanan</b><div class="info"><div class="row sb"><span class="xs mut b">KUNCI VERIFIKASI SERAH TERIMA</span><span class="bdg bgg">Rahasia</span></div><div class="row sb"><b id="otp-${o.id}" style="font-size:34px;letter-spacing:.2em">••••</b><div class="row"><button class="btn bg sm" data-act="otpshow" data-id="${o.id}">${ic('eye',13)} Lihat</button><button class="btn bg sm" data-act="otpcopy" data-id="${o.id}">${ic('copy',13)} Salin</button></div></div><span class="xs mut">Berikan 4 angka ini kepada <b>${esc(b.seller.name)}</b> hanya setelah Anda memeriksa kondisi fisik buku di lokasi COD.</span></div>
+ <div class="fg">${st==='aktif'&&o.stage===2?`<button class="btn bd full" data-act="simseller" data-id="${o.id}">▶ Simulasi: Penjual Konfirmasi (mode demo)</button>`:''}${st==='aktif'&&o.stage===3?`<div class="fg"><input class="in" id="otpin-${o.id}" maxlength="4" inputmode="numeric" placeholder="Masukkan 4 digit OTP"><button class="btn bp full" data-act="recv" data-id="${o.id}">${ic('check',14,3)} Konfirmasi Buku Diterima Fisik</button><button class="btn bg full" data-act="dispute" data-id="${o.id}">Laporkan Ketidaksesuaian Fisik</button></div>`:''}<a class="btn bp full" href="#/sukses/${o.id}">${ic('qr',15)} Lihat Tiket Serah Terima &amp; OTP</a><a class="btn bd full" href="#/chat/${o.bookId}">${ic('chat',15)} Hubungi ${esc(b.seller.name.split(' ')[0])}</a>${st==='aktif'&&o.stage<=3?`<button class="btn br full" data-act="cancel" data-id="${o.id}">${ic('x',14)} Batalkan Pesanan (Sebelum Konfirmasi Fisik)</button>`:''}</div></div>
+ <div class="card pad"><b>${ic('shield',16)} Panduan Aman Campus Konservasi</b><ul class="safe" style="margin-top:12px"><li>${ic('pin',15)}<span>Lakukan pertemuan di <b>Titik Resmi NessPages</b> (Kantin FEB, Lobi FT, atau Perpus Pusat).</span></li><li>${ic('eye',15)}<span>Cek daftar isi, halaman sobek, serta coretan sebelum menyebutkan 4 digit OTP.</span></li><li style="color:var(--red)">${ic('x',15)}<span><b>Dilarang</b> menyerahkan uang tunai di luar sistem. Seluruh pembayaran dilindungi sistem escrow NessPages.</span></li></ul></div></div></div>`}
+function listingsTab(ls){return `<div class="row sb" style="margin-bottom:14px"><b style="font-size:16px">Penawaran Titip Jual Anda</b><a class="btn bp sm" href="#/titip">+ Titip Buku Baru</a></div>${ls.length?`<div class="card tw"><table class="t"><thead><tr><th>ID</th><th>Judul Buku</th><th>Fakultas</th><th>Harga</th><th>Status Kurasi</th><th></th></tr></thead><tbody>${ls.map(l=>`<tr><td><code>${l.id}</code></td><td><b>${esc(l.title)}</b><div class="xs mut">Kondisi ${l.cond}% • ${esc(l.at)}</div></td><td>${l.fak}</td><td>${l.buy?'Jual '+rp(l.buy):''}${l.buy&&l.rent?'<br>':''}${l.rent?'Sewa '+rp(l.rent):''}</td><td><span class="bdg ${l.status==='approved'?'bgg':l.status==='rejected'?'bgr':'bga'}">${l.status==='approved'?'Disetujui & Tayang':l.status==='rejected'?'Ditolak':'Menunggu Review'}</span>${l.reason?`<div class="xs mut">Alasan: ${esc(l.reason)}</div>`:''}</td><td>${l.status==='pending'?`<button class="btn br sm" data-act="dellist" data-id="${l.id}">Tarik</button>`:l.status==='approved'?`<a class="btn bo sm" href="#/buku/${l.id}">Lihat</a>`:''}</td></tr>`).join('')}</tbody></table></div>`:`<div class="card empty"><b>Belum ada penawaran</b><p class="sm" style="margin:6px 0 14px">Ubah buku semester lalu menjadi saldo.</p><a class="btn bp" href="#/titip">Mulai Titip Jual</a></div>`}`}
+
+V.chat=(p)=>{const b=getBook(p[1]);if(!b){location.hash='#/katalog';return}const key='bk:'+b.id;V._chat=key;V._cb=b;
+ if(!S.chats[key])S.chats[key]=[{w:'sy',t:'Pesan yang Anda sampaikan dijamin aman. Silakan tanyakan segala informasi yang Anda butuhkan terkait buku ini.',h:hm()}];save();
+ const o=S.orders.find(x=>x.bookId===b.id&&x.status==='aktif');
+ app.innerHTML=`<div class="wrap" style="max-width:1100px"><div class="crumb"><a href="#/pesanan">← Daftar Percakapan</a> / <b>${o?'Pesanan #'+o.id:'Chat Penjual'}</b></div><div class="co"><div class="card" style="overflow:hidden"><div class="pad row sb" style="background:var(--mint)"><div class="row"><span class="pic">${initials(b.seller.name)}</span><div><b>${esc(b.seller.name)} <span class="bdg bgg">${ic('check',10,3)} SSO UNNES</span></b><div class="xs mut">NIM ${esc(b.seller.nim)} • ${esc(b.seller.ang)} • ${ic('star',11)} ${b.seller.rt}/5 (${b.seller.tx} transaksi)<br><span class="g">● Online • Balasan rata-rata &lt; 5 menit</span></div></div></div></div>
+ <a class="row pad" href="#/buku/${b.id}" style="background:#f8fafc;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 20px"><div style="flex:none">${cover(b,3.5)}</div><div><span class="bdg bga">${b.fak} UNNES</span><b class="sm" style="display:block">${esc(b.title)}</b></div></a>
+ <div class="chat" style="height:420px"><div class="msgs" id="msgs"></div><div class="qk">${['Konfirmasi Lokasi Titik Temu 📍','Saya Sudah Tiba di Lokasi 👋','Kirim Foto Kondisi Buku 📷','Cek Jadwal Temu ⏰'].map(t=>`<button data-act="quick" data-t="${t}">${t}</button>`).join('')}</div><form class="cb" data-on-submit="send"><input class="in" id="cmsg" autocomplete="off" placeholder="Ketik pesan ke ${esc(b.seller.name.split(' ')[0])}..."><button class="btn bp">${ic('send',15)} Kirim</button></form></div><div class="xs mut" style="padding:0 20px 12px">Enkripsi terverifikasi NIM • Percakapan dipantau sistem SIM Escrow UNNES</div></div>
+ <div style="display:grid;gap:16px;align-content:start">${o?`<div class="card pad"><div class="row sb"><b>Validasi Serah Terima</b><span class="bdg bga">Menunggu COD</span></div><div class="xs mut b" style="text-align:center;margin:12px 0 4px">KODE OTP RAHASIA PEMBELI</div><div class="otp">${o.otp}</div><div class="sumr"><span class="mut">Jadwal Temu</span><b>${esc(o.slot.split(' (')[0])}</b></div><a class="btn bp full" href="#/pesanan" style="margin-top:8px">Konfirmasi Buku Diterima Fisik</a></div>
+ <div class="card pad"><b>${ic('pin',15)} Spot Titik Temu COD</b><p class="sm mut">${esc(o.cod)}</p><b class="sm" style="display:block;margin:10px 0 6px">Protokol Aman NessPages:</b><ul class="safe xs"><li>${ic('check',13)} Pastikan jumlah halaman buku lengkap.</li><li>${ic('check',13)} Cek stempel/label agar sesuai dengan silabus semester ini.</li><li>${ic('check',13)} Jangan lakukan transfer tunai di luar aplikasi.</li></ul></div>`:`<div class="card pad"><b>Belum ada pesanan aktif</b><p class="sm mut" style="margin:6px 0 12px">Tanya dulu soal kondisi buku, lalu pesan dengan escrow.</p><a class="btn bp full" href="#/checkout/${b.id}?mode=${b.rent?'sewa':'beli'}">Ambil / Sewa Sekarang</a></div>`}</div></div></div>`;drawChat()};
+function drawChat(){const m=$('#msgs');if(!m)return;m.innerHTML=(S.chats[V._chat]||[]).map(x=>`<div class="m ${x.w}">${esc(x.t)}${x.w!=='sy'?`<small>${x.h}</small>`:''}</div>`).join('');m.scrollTop=m.scrollHeight}
+function reply(t){const l=t.toLowerCase();if(/tiba|sampai/.test(l))return 'Oke Kak, aku segera ke sana. Mohon tunggu sebentar ya.';if(/lokasi|titik/.test(l))return 'Siap, titik temu sesuai pesanan ya. Nanti aku kabari kalau sudah jalan.';if(/foto|kondisi/.test(l))return 'Siap, aku kirim foto halaman dalam dan punggung bukunya setelah ini. Kondisi sesuai deskripsi di listing.';if(/jadwal|jam/.test(l))return 'Jadwal ketemu sesuai slot yang dipilih di pesanan. Kalau mau geser, kabari aku dulu ya.';if(/harga|nego|kurang/.test(l))return 'Harga sudah sesuai kurasi kampus Kak, jadi belum bisa nego ya. Tapi bisa pakai voucher di checkout.';return 'Halo Kak! Siap, notifikasi pesanan sudah masuk. Buku sudah saya siapkan dan masih lengkap.'}
+function sendChat(t){t=t.trim();if(!t)return;const k=V._chat;S.chats[k].push({w:'me',t,h:hm()});save();drawChat();setTimeout(()=>{if(V._chat!==k)return;S.chats[k].push({w:'th',t:reply(t),h:hm()});save();drawChat()},900)}
+
+/* ---- Titip jual ---- */
+const TJ={photos:[]};
+V.titip=()=>{const d=S.draft||{};TJ.photos=(d.photos||[]).slice();
+ app.innerHTML=`<div class="wrap" style="max-width:1100px"><div class="crumb"><a href="#/">Beranda</a> / <b>Titip Jual</b></div><h1 style="font-size:30px;font-weight:800;letter-spacing:-.6px">Formulir Titip Jual &amp; Sewa Buku Matkul</h1><p class="mut" style="margin-bottom:18px">Bantu sesama mahasiswa mendapatkan literatur kuliah resmi berkualitas dengan harga terjangkau lewat sistem titip jual dan sewa aman di area UNNES &amp; Gunungpati.</p>
+ <div class="steps" style="margin-bottom:18px"><a href="#/titip" class="stp on"><span class="n">1</span><div><b>Identitas &amp; Buku</b></div></a><div class="stp"><span class="n">2</span><div><b>Kondisi &amp; Foto Fisik</b></div></div><div class="stp"><span class="n">3</span><div><b>Opsi Harga &amp; Titik COD</b></div></div></div>
+ <form id="tf" class="co" data-on-submit="tsubmit" data-on-input="tlive"><div style="display:grid;gap:16px">
+ <div class="card pad"><div class="sec-t">1. Identitas &amp; Buku Kuliah <span class="bdg bgg" style="margin-left:auto">Wajib Diisi</span></div><div class="fg"><div><label class="l">Judul Buku Lengkap</label><input class="in" name="title" required maxlength="120" placeholder="Contoh: Metodologi Penelitian Manajemen" value="${esc(d.title||'')}"></div><div class="fg g2"><div><label class="l">Penulis</label><input class="in" name="author" maxlength="100" placeholder="Prof. Dr. Sugiyono" value="${esc(d.author||'')}"></div><div><label class="l">ISBN (opsional)</label><input class="in" name="isbn" maxlength="24" placeholder="978-..." value="${esc(d.isbn||'')}"></div></div>
+ <div class="fg g2"><div><label class="l">Fakultas Pemilik / Kurikulum</label><select class="sel" name="fak" required>${Object.entries(FAK).map(([k,f])=>`<option value="${k}" ${(d.fak||'FEB')===k?'selected':''}>${esc(f.full)}</option>`).join('')}</select></div><div><label class="l">Program Studi &amp; Mata Kuliah</label><input class="in" name="matkul" required maxlength="100" placeholder="S1 Manajemen - Metodologi Penelitian" value="${esc(d.matkul||'')}"></div></div>
+ <div class="fg g2"><div><label class="l">Nama Pemilik</label><input class="in" readonly value="${esc(S.user.name)}"></div><div><label class="l">NIM</label><input class="in" readonly value="${esc(S.user.nim)}"></div></div></div></div>
+ <div class="card pad"><div class="sec-t">2. Kondisi Fisik &amp; Foto Fisik <span class="bdg bga" style="margin-left:auto">Verifikasi Fisik</span></div><div class="fg"><div><label class="l">Persentase kondisi buku: <span id="cv" class="g">${d.cond||90}%</span></label><input type="range" name="cond" min="60" max="100" step="5" value="${d.cond||90}" style="width:100%;accent-color:#0b7a4b"></div>
+ <div><label class="l">Catatan Detail Kondisi Fisik <span style="float:right" id="tc" class="mut">0/500 karakter</span></label><textarea class="ta" name="note" maxlength="500" placeholder="Semua halaman utuh lengkap 412 lembar, tidak ada robek atau lepas. Terdapat stabilo hijau rapi di Bab 3 &amp; 4.">${esc(d.note||'')}</textarea></div>
+ <div><label class="l">Upload Foto Fisik Nyata (Minimal 2 Sisi) <span style="float:right" class="mut">JPG/PNG, maks 4 foto</span></label><label class="ph-up" style="display:block">${ic('upload',24)}<div class="b" style="margin-top:6px">Tarik &amp; lepas foto buku di sini, atau <span class="g">pilih dari galeri</span></div><div class="xs mut">Disarankan dengan pencahayaan terang/meja belajar</div><input type="file" id="ph" accept="image/*" multiple hidden></label><div class="pth" id="pth"></div></div></div></div>
+ <div class="card pad"><div class="sec-t">3. Opsi Harga &amp; Titik COD <span class="bdg bgg" style="margin-left:auto">Escrow UNNES</span></div><div class="fg"><div class="fg g2"><div><label class="ck"><input type="checkbox" name="mj" ${d.mj===false?'':'checked'}> <b>Jual Putus (hak milik)</b></label><label class="l" style="margin-top:8px">Harga jual (Rp)</label><input class="in" name="buy" type="number" min="0" step="1000" placeholder="45000" value="${d.buy||''}"></div><div><label class="ck"><input type="checkbox" name="ms" ${d.ms?'checked':''}> <b>Sewakan per semester</b></label><label class="l" style="margin-top:8px">Harga sewa / semester (Rp)</label><input class="in" name="rent" type="number" min="0" step="1000" placeholder="15000" value="${d.rent||''}"></div></div>
+ <div><label class="l">Preferensi Titik Serah Terima / COD UNNES</label><select class="sel" name="cod">${COD.map(c=>`<option ${(d.cod||COD[0])===c?'selected':''}>${esc(c)}</option>`).join('')}</select><div class="xs mut" style="margin-top:4px">Penentuan COD dilakukan setelah pembeli memesan di platform. Dana aman ditampung rekber NessPages.</div></div>
+ <div class="fg g2"><div><label class="l">Bank / e-wallet pencairan</label><select class="sel" name="pbank">${BANKS.map(b=>`<option>${b}</option>`).join('')}<option>GoPay</option><option>OVO</option><option>DANA</option></select></div><div><label class="l">Nomor rekening</label><input class="in" name="pacc" inputmode="numeric" maxlength="20" placeholder="Hanya 4 digit akhir disimpan"></div></div>
+ <label class="ck" style="align-items:flex-start"><input type="checkbox" name="agree" ${d.agree?'checked':''}> <span class="sm">Saya menyatakan bahwa buku ini milik sah saya dan kondisi fisik telah diisi secara jujur sesuai fakta lapangan. Saya bersedia hadir di titik temu COD yang disepakati ketika pesanan masuk.</span></label>
+ <div class="row sb wr"><button type="button" class="btn bg" data-act="draft">${ic('book',14)} Simpan sebagai Draf</button><button class="btn bp">${ic('upload',14)} Kirim Penawaran Buku</button></div></div></div></div>
+ <aside style="display:grid;gap:16px;align-content:start;position:sticky;top:76px"><div class="card pad"><div class="row sb"><b class="xs mut" style="letter-spacing:.06em">RINGKASAN DRAF</b><span class="bdg bga">Siap Diperiksa</span></div><div id="prev" style="margin-top:12px"></div></div>
+ <div class="card pad"><b>${ic('tag',15)} Tips Cepat Laku</b><ol class="sm mut" style="padding-left:18px;margin-top:8px;line-height:1.7"><li><b style="color:var(--ink)">Diskon 40-60%</b> dari harga toko untuk buku yang sudah lebih dari 1 tahun.</li><li><b style="color:var(--ink)">Sebut nama dosen pengampu</b> di catatan agar mudah dicari adik tingkat.</li><li><b style="color:var(--ink)">Foto terang &amp; jelas</b> pada bagian yang rapi atau punya catatan.</li></ol></div>
+ <div class="card pad" style="background:#0f172a;color:#cbd5e1"><b style="color:#fff">${ic('shield',15)} Jaminan Privasi &amp; PDP</b><p class="xs" style="margin-top:6px">Kontak WhatsApp/NIM hanya dibuka kepada pembeli yang sudah melakukan transaksi resmi.</p></div></aside></form></div>`;
+ drawPhotos();tlive();};
+function drawPhotos(){const e=$('#pth');if(e)e.innerHTML=TJ.photos.map((s,i)=>`<div><img src="${s}" alt=""><button type="button" data-act="rmph" data-i="${i}">×</button></div>`).join('')}
+function tform(){const f=$('#tf');const g=n=>f.elements[n];return{title:g('title').value.trim(),author:g('author').value.trim(),isbn:g('isbn').value.trim(),fak:g('fak').value,matkul:g('matkul').value.trim(),cond:+g('cond').value,note:g('note').value.trim(),photos:TJ.photos.slice(),mj:g('mj').checked,ms:g('ms').checked,buy:g('buy').value,rent:g('rent').value,cod:g('cod').value,agree:g('agree').checked,pb:g('pbank')?g('pbank').value:'',pa:g('pacc')?g('pacc').value.replace(/\D/g,''):''}}
+function tlive(){const f=$('#tf');if(!f)return;const d=tform();$('#cv').textContent=d.cond+'%';$('#tc').textContent=d.note.length+'/500 karakter';const bk={id:'draft',fak:d.fak,title:d.title||'Judul buku Anda',author:d.author||'-'};const buy=d.mj?+d.buy||0:0,rent=d.ms?+d.rent||0:0;
+ $('#prev').innerHTML=`<div class="row" style="gap:12px;align-items:flex-start"><div style="flex:none">${cover(bk,5)}</div><div><span class="bdg bga">${d.fak} • ${esc(FAK[d.fak].n.split(' ')[0])}</span><b class="sm" style="display:block;margin:3px 0">${esc(bk.title)}</b><div class="xs mut">${esc(bk.author)}</div><div class="xs"><b class="g">Beli: ${rp(buy)}</b> • Sewa: ${rp(rent)}/smt</div></div></div><div class="info"><div class="sumr" style="padding:0"><span class="mut">Harga Jual Ditetapkan</span><b>${rp(buy)}</b></div><div class="sumr" style="padding:0"><span class="mut">Biaya Platform (5%)</span><b style="color:var(--red)">-${rp(Math.round(buy*.05))}</b></div><div class="tot" style="margin:0"><span class="b sm">Estimasi Bersih Diterima</span><b style="font-size:18px">${rp(Math.round(buy*.95))}</b></div></div><div class="xs mut">Dana akan ditransfer setelah serah terima COD terkonfirmasi.</div>`}
+function compress(file){return new Promise(res=>{const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const m=640,s=Math.min(1,m/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*s;c.height=im.height*s;c.getContext('2d').drawImage(im,0,0,c.width,c.height);res(c.toDataURL('image/jpeg',.68))};im.onerror=()=>res(null);im.src=r.result};r.onerror=()=>res(null);r.readAsDataURL(file)})}
+
+/* ---- Admin ---- */
+let atab='pending',aq='';
+V.admin=()=>{
+ if(!isAdmin()){const lk=+sessionStorage.getItem('np_lock')||0;
+  app.innerHTML=`<div class="wrap"><div class="card pad lock"><div class="lic">${ic('lock',28)}</div><h1 style="font-size:22px;font-weight:800">Akses Khusus Admin SIM</h1><p class="mut sm" style="margin:6px 0 18px">Dashboard analitik dan Quality Gate hanya untuk pengelola resmi NessPages.</p><form data-on-submit="login" class="fg"><input class="in" type="password" id="apw" autocomplete="current-password" placeholder="Masukkan sandi admin" required><div class="err" id="aerr"></div><button class="btn bp full" id="abtn">Masuk Dashboard</button></form></div></div>`;return}
+ const ap=S.listings.filter(l=>l.status==='approved'),pe=S.listings.filter(l=>l.status==='pending'),re=S.listings.filter(l=>l.status==='rejected');
+ const oAct=S.orders.filter(o=>o.status!=='batal'),sum=oAct.reduce((a,o)=>a+o.total,0),nb=oAct.filter(o=>o.mode==='beli').length,ns=oAct.filter(o=>o.mode==='sewa').length;
+ const XX=okX(),totTx=XX.length,SOLD=XX.filter(x=>x.model==='beli').length,RENT=XX.filter(x=>x.model==='sewa').length,NIL=XX.reduce((a,x)=>a+x.total,0),EFF=(XX.filter(x=>x.st==='selesai').length/Math.max(1,XX.length)*100).toFixed(1),TP=TOP2();
+ const dem=[['Anatomi & Fisiologi Manusia','FK','#e11d48',420,'1.00'],['Metodologi Penelitian & Skripsi','Lintas Fakultas','#0d9488',385+S.orders.filter(o=>o.bookId==='b06').length,'+300%'],['Akuntansi Keuangan Menengah & Perpajakan','FEB','#f59e0b',310,'0.74'],['Kalkulus Lanjut & Pemrograman Web','FMIPA / FT','#06b6d4',245,'0.58'],['Hukum Perdata & Tata Usaha Negara','FH','#8b5cf6',190,'0.45']];
+ const list=S.listings.filter(l=>l.status===atab&&(!aq||(l.title+l.owner.name+l.owner.nim).toLowerCase().includes(aq.toLowerCase())));
+ app.innerHTML=`<div class="wrap" style="max-width:1100px;padding-top:22px"><div class="card pad row sb wr"><div><h1 style="font-size:24px;font-weight:800">Panel Analitik &amp; Kontrol Sirkulasi Akademik Kampus</h1><p class="mut sm" style="max-width:600px">Decision Support System (DSS) berbasis data riil pergerakan buku perkuliahan: forecasting lonjakan matkul, kecepatan perputaran inventaris, dan validasi kelayakan titip jual mahasiswa.</p></div><div class="row wr"><select class="sel" style="width:auto"><option>Semester Gasal 2026/2027</option><option>Semester Genap 2025/2026</option></select><button class="btn bp" data-act="csv">${ic('dl',14)} Unduh Laporan</button><button class="btn bg" data-act="alogout">${ic('out',14)} Keluar</button></div></div>
+ <div class="kpi" style="margin-top:16px"><div class="card"><small>Total Literatur Aktif</small><b>${allBooks().length}</b><span class="xs g b">↗ +18% vs. minggu lalu</span></div><div class="card"><small>Total Transaksi Smt Ini</small><b>${rp(NIL)}</b><span class="xs"><span class="g">● ${SOLD} Beli</span> • <span style="color:#d97706">● ${RENT} Sewa</span></span></div><div class="card"><small>Fakultas Permintaan Tertinggi</small><b>${TP.n}</b><span class="xs" style="color:var(--red)"><b>${TP.p}% Pangsa Volume</b> • Siklus Praktikum Lab</span></div><div class="card"><small>Efisiensi Sirkulasi</small><b>${EFF}%</b><span class="xs mut">&lt; 7 Hari Turnaround • Velocity Prima</span></div></div>
+ <div class="co two" style="margin-top:16px;grid-template-columns:1.2fr 1fr"><div class="card pad bars"><span class="eyb">Supply-demand forecasting analytics</span><h3 style="font-size:17px;font-weight:800;margin:4px 0 16px">Kategori Mata Kuliah Paling Tinggi Dicari Mahasiswa UNNES</h3>${dem.map(d=>`<div class="br2"><div class="tp"><span><span style="color:${d[2]}">●</span> ${d[0]} <span class="bdg" style="background:#f1f5f9">${d[1]}</span></span><span>${d[3]} pencarian <span class="xs mut">(Index: ${d[4]})</span></span></div><div class="tr"><i style="width:${d[3]/4.5}%;background:${d[2]}"></i></div></div>`).join('')}<div class="okbox" style="padding:12px"><p class="sm"><b>Insight Rekomendasi DSS (Rule #04):</b> Pola musiman menunjukkan lonjakan 300% pada buku metodologi skripsi di bulan Agustus-September. Pengelola disarankan membuka konsinyasi titip jual bersama mahasiswa tingkat akhir.</p></div></div>
+ <div class="card pad"><span class="eyb" style="color:var(--mut)">Market share distribusi</span><h3 style="font-size:17px;font-weight:800;margin:4px 0 16px">Distribusi Transaksi per Fakultas UNNES</h3><div class="row" style="gap:20px"><div class="donut" style="background:${CONIC()}"><div><b>${totTx}</b><span class="xs mut">TRANSAKSI</span></div></div><div class="sm" style="line-height:2">${SHARES().map(x=>`<div><span style="color:${x[0]}">●</span> ${x[1]} <b style="float:right;margin-left:14px">${x[2]}</b></div>`).join('')}</div></div><b class="sm" style="display:block;margin-top:16px">${ic('pin',14)} Titik Temu COD Favorit (UNNES Geo-Analytics)</b>${CODFAV().map((x,i)=>`<div class="info row sb" style="margin:6px 0 0;padding:9px 12px;display:flex"><span class="sm">${i+1}. ${x[0]}</span><b class="g">${x[1]}</b></div>`).join('')}</div></div>
+ <div class="card pad" style="margin-top:16px"><div class="row sb wr"><div><h3 style="font-size:18px;font-weight:800">${ic('shield',18)} Verifikasi Kelayakan Titip Jual Mahasiswa (Quality Gate)</h3><p class="mut sm">Validasi kepatuhan fisik, kelengkapan silabus, keaslian sampul, dan verifikasi identitas NIM SSO sebelum listing tayang di katalog.</p></div><div><input class="in" id="aq" placeholder="Filter NIM / Judul..." value="${esc(aq)}" data-on-input="aq" style="margin-bottom:8px"><div class="tabs"><button class="${atab==='pending'?'on':''}" data-act="atab" data-t="pending">Menunggu Review (${pe.length})</button><button class="${atab==='approved'?'on':''}" data-act="atab" data-t="approved">Disetujui (${allT().filter(x=>x.st==='approved').length})</button><button class="${atab==='rejected'?'on':''}" data-act="atab" data-t="rejected">Ditolak (${re.length})</button></div></div></div>
+ <div class="tw" style="margin-top:14px"><table class="t"><thead><tr><th>ID Listing</th><th>Judul Buku &amp; Matkul</th><th>Fak. &amp; Pemilik</th><th>Kondisi Fisik</th><th>Taksiran Nilai</th><th>Aksi Audit SIM</th></tr></thead><tbody id="atb">${list.length?list.map(l=>`<tr><td><code>#${l.id}</code></td><td><div class="row" style="gap:10px"><div style="flex:none">${l.photos&&l.photos[0]?`<img src="${l.photos[0]}" style="width:42px;height:52px;object-fit:cover;border-radius:6px" alt="">`:cover({fak:l.fak,title:l.title,author:l.author||''},3.8)}</div><div><b>${esc(l.title)}</b><div class="xs mut">Matkul: ${esc(l.matkul)}<br>ISBN: ${esc(l.isbn||'-')}</div></div></div></td><td><span class="bdg" style="background:${FAK[l.fak].bg};color:${FAK[l.fak].c}">${l.fak}</span><div class="b sm">${esc(l.owner.name)}</div><div class="xs mut">NIM: ${esc(l.owner.nim)}</div></td><td><b class="g">${l.cond}% (${l.cond>=95?'Seperti Baru':l.cond>=90?'Mulus':l.cond>=85?'Kondisi Wajar':'Catatan Margin'})</b><div class="xs mut">${esc(l.note||'-')}</div>${l.photos&&l.photos.length?`<div class="xs g">${l.photos.length} foto terlampir</div>`:''}</td><td><b>${rp(l.buy||l.rent)}</b><div class="xs mut">${l.buy?'Langsung Jual':'Sewa'}${l.rent&&l.buy?' / Sewa '+rp(l.rent):''}</div></td><td><div class="row">${l.status==='pending'?`<button class="btn bp sm" data-act="approve" data-id="${l.id}">✓ Setujui</button><button class="btn br sm" data-act="reject" data-id="${l.id}">✕ Tolak</button>`:l.status==='approved'?`<button class="btn br sm" data-act="reject" data-id="${l.id}">Cabut</button>`:`<button class="btn bo sm" data-act="approve" data-id="${l.id}">Setujui Ulang</button>`}</div></td></tr>`).join(''):`<tr><td colspan="6" class="empty">${atab==='pending'?'Antrean kosong. Semua listing sudah diaudit.':'Data historis listing tersimpan di arsip SIM. Hanya aktivitas sesi ini yang ditampilkan.'}</td></tr>`}</tbody></table></div><div class="row sb sm mut" style="margin-top:10px"><span>Menampilkan ${list.length} item dalam antrean audit verifikator hari ini.</span><span class="g b">● SLA Maksimal: ≤ 6 Jam Kerja</span></div></div>
+ <div class="card pad" style="margin-top:16px"><div class="row sb"><h3 style="font-size:18px;font-weight:800">${ic('bag',18)} Manajemen Pesanan Masuk (${S.orders.length})</h3><button class="btn br sm" data-act="resetdemo">Reset Data Demo</button></div><div class="tw" style="margin-top:10px"><table class="t"><thead><tr><th>ID Order</th><th>Pembeli</th><th>Buku</th><th>Model</th><th>Total</th><th>Tahap</th><th>Aksi</th></tr></thead><tbody>${S.orders.length?S.orders.slice().reverse().map(o=>{const b=getBook(o.bookId);return `<tr><td><code>${o.id}</code></td><td>${esc(o.buyer||S.user.name)}<div class="xs mut">${esc(o.bnim||S.user.nim)}</div></td><td>${esc(b?b.title:'-')}</td><td>${o.mode}</td><td><b>${rp(o.total)}</b></td><td><span class="bdg ${o.status==='aktif'?'bgg':o.status==='selesai'?'bgb':o.status==='sengketa'?'bga':'bgr'}">${o.status==='aktif'?'Tahap '+o.stage+'/4':o.status==='batal'?'Batal':o.status==='sengketa'?'SENGKETA':'Selesai'}</span></td><td>${o.status==='aktif'?`<button class="btn bo sm" data-act="adv" data-id="${o.id}">Majukan</button>`:o.status==='sengketa'?`<button class="btn bp sm" data-act="refund" data-id="${o.id}">Refund</button>`:''}</td></tr>`}).join(''):'<tr><td colspan="7" class="empty">Belum ada pesanan.</td></tr>'}</tbody></table></div></div></div>`};
+
+/* ========== router ========== */
+function route(){modal('');const h=location.hash.slice(1)||'/';const [pp,qs]=h.split('?');const p=pp.split('/').filter(Boolean);const q=new URLSearchParams(qs||'');const name=p[0]||'home';UM=false;if(['titip','toko'].includes(name)&&S.role!=='penjual'){S.role='penjual';save()}else if(['pesanan','checkout','sukses'].includes(name)&&S.role!=='pembeli'){S.role='pembeli';save()}renderHdr();renderFtr();
+ try{(V[name]||V.home)(p,q)}catch(e){console.error(e);app.innerHTML=`<div class="wrap empty"><h2>Terjadi kesalahan memuat halaman</h2><a class="btn bp" href="#/" style="margin-top:12px">Ke Beranda</a></div>`}
+ window.scrollTo(0,0)}
+window.addEventListener('hashchange',route);
+
+/* ========== actions ========== */
+const ACT={
+ ovclose:(el,e)=>{if(e.target===el)modal('')},close:()=>modal(''),
+ gal:el=>{V._gal=+el.dataset.i;drawGallery()},
+ mode:(el,e)=>{e.preventDefault();V._mode=el.dataset.m;drawOptions()},
+ comode:el=>{V._co.mode=el.dataset.m;drawSum()},
+ cod:el=>{V._co.cod=el.dataset.v;$$('#codl .rd').forEach(r=>{const on=r===el;r.classList.toggle('on',on);$('input',r).checked=on})},
+ slot:el=>{V._co.slot=el.dataset.v;$$('#slots button').forEach(b=>b.classList.toggle('on',b===el))},
+ vc:()=>{const c=$('#vc').value.trim().toUpperCase();if(VOUCH[c]){V._co.vc=c;$('#vce').style.color='var(--g)';$('#vce').textContent='Voucher berhasil dipakai.'}else{V._co.vc='';$('#vce').style.color='var(--red)';$('#vce').textContent=c?'Kode voucher tidak valid.':'Voucher dilepas.'}drawSum()},
+ pay:()=>{const c=V._co,wa=$('#wa').value.replace(/[\s-]/g,'');if(!/^(08|\+?628)\d{8,12}$/.test(wa)){$('#waerr').textContent='Masukkan nomor WhatsApp aktif yang valid (contoh 081234567890).';$('#wa').focus();return}$('#waerr').textContent='';
+  c.wa=wa;c.day=V._co.days[+$('#day').value];c.pay=$('#pay').value;c.note=$('#note').value.trim();const pr=price(c.b,c.mode,c.vc);
+  modal(`<div style="text-align:center"><h3 style="font-size:18px;font-weight:800">Pembayaran ${esc(c.pay)}</h3><p class="sm mut" style="margin:4px 0 14px">Dana ditahan escrow NessPages. Ini simulasi, tidak ada uang sungguhan.</p>${qrSvg(c.b.id+Date.now(),190)}<div class="tot" style="margin-top:14px"><span class="b sm">Total Bayar</span><b>${rp(pr.total)}</b></div><div class="fg" style="margin-top:14px"><button class="btn bp full" data-act="paid">Simulasikan Pembayaran Berhasil</button><button class="btn bg full" data-act="close">Batal</button></div></div>`)},
+ paid:()=>{const c=V._co,pr=price(c.b,c.mode,c.vc);S.user.wa=c.wa;
+  const o={id:'NP-ORD-'+new Date().getFullYear()+'-'+String(1000+Math.floor(Math.random()*9000)),bookId:c.b.id,mode:c.mode,sub:pr.sub,fee:pr.fee,disc:pr.disc,dep:pr.dep,total:pr.total,voucher:c.vc,cod:c.cod,day:c.day,slot:c.slot,note:c.note,wa:c.wa,pay:c.pay,otp:String(1000+Math.floor(Math.random()*9000)),stage:2,status:'aktif',at:now()};
+  S.orders.push(o);save();modal('');toast('Pesanan dibuat. Dana terkunci di escrow.');location.hash='#/sukses/'+o.id},
+ pdf:el=>{const o=S.orders.find(x=>x.id===el.dataset.id);const b=getBook(o.bookId);const w=window.open('','_blank');if(!w){toast('Pop-up diblokir browser.',1);return}w.document.write(`<title>Bukti ${o.id}</title><body style="font-family:sans-serif;padding:30px"><h2>NessPages UNNES - Bukti Pesanan</h2><p><b>${o.id}</b><br>${o.at}</p><p>${esc(b?b.title:'')}<br>Model: ${o.mode}<br>Titik COD: ${esc(o.cod)} (${esc(o.day)}, ${esc(o.slot)})</p><h3>Total Escrow: ${rp(o.total)}</h3><small>Dokumen simulasi prototipe.</small></body>`);w.document.close();w.print()},
+ ptab:el=>{ptab=el.dataset.t;V.pesanan([],new URLSearchParams())},
+ otpshow:el=>{const o=S.orders.find(x=>x.id===el.dataset.id),e=$('#otp-'+o.id);const hid=e.textContent.includes('•');e.textContent=hid?o.otp:'••••'},
+ otpcopy:el=>{const o=S.orders.find(x=>x.id===el.dataset.id);(navigator.clipboard?navigator.clipboard.writeText(o.otp):Promise.reject()).then(()=>toast('OTP disalin. Jangan bagikan sebelum cek fisik.'),()=>toast('Gagal menyalin, lihat OTP manual.',1))},
+ simseller:el=>{const o=S.orders.find(x=>x.id===el.dataset.id);o.stage=3;save();toast('Penjual mengonfirmasi jadwal dan menyiapkan buku.');V.pesanan([],new URLSearchParams())},
+ recv:el=>{const o=S.orders.find(x=>x.id===el.dataset.id),v=$('#otpin-'+o.id).value.trim();if(v!==o.otp){toast('Kode OTP tidak cocok.',1);return}o.stage=5;o.status='selesai';save();toast('Serah terima terverifikasi. Dana diteruskan ke penjual.');V.pesanan([],new URLSearchParams());renderHdr()},
+ dispute:el=>{const o=S.orders.find(x=>x.id===el.dataset.id);o.status='sengketa';save();toast('Laporan diterima. Dana ditahan sampai admin meninjau.');V.pesanan([],new URLSearchParams());renderHdr()},
+ cancel:el=>{if(!confirm('Batalkan pesanan ini? Dana escrow akan dikembalikan penuh.'))return;const o=S.orders.find(x=>x.id===el.dataset.id);o.status='batal';save();toast('Pesanan dibatalkan. Dana direfund.');V.pesanan([],new URLSearchParams());renderHdr()},
+ dellist:el=>{if(!confirm('Tarik penawaran ini?'))return;S.listings=S.listings.filter(l=>l.id!==el.dataset.id);save();V.pesanan([],new URLSearchParams())},
+ quick:el=>sendChat(el.dataset.t),
+ rmph:el=>{TJ.photos.splice(+el.dataset.i,1);drawPhotos()},
+ draft:()=>{S.draft=tform();save();toast('Draf tersimpan di browser ini.')},
+ catreset:()=>{cat={fak:cat.fak,q:'',tx:{beli:false,sewa:false},cond:0,max:450000,sort:'rel',page:1};location.hash=cat.fak?'#/katalog/'+cat.fak:'#/katalog';route()},
+ catpage:el=>{cat.page=+el.dataset.p;catUpdate();window.scrollTo({top:240,behavior:'smooth'})},
+ atab:el=>{atab=el.dataset.t;V.admin()},
+ alogout:()=>{sessionStorage.removeItem('np_admin');V.admin();toast('Sesi admin diakhiri.')},
+ approve:el=>{const l=S.listings.find(x=>x.id===el.dataset.id);l.status='approved';delete l.reason;save();toast('Listing disetujui dan tayang di katalog.');V.admin()},
+ reject:el=>{const l=S.listings.find(x=>x.id===el.dataset.id);const r=prompt('Alasan penolakan / pencabutan (opsional):','');if(r===null)return;l.status='rejected';l.reason=r;save();toast('Listing ditolak.');V.admin()},
+ adv:el=>{const o=S.orders.find(x=>x.id===el.dataset.id);o.stage++;if(o.stage>=5)o.status='selesai';save();V.admin()},
+ refund:el=>{const o=S.orders.find(x=>x.id===el.dataset.id);o.status='batal';save();toast('Dana dikembalikan ke pembeli.');V.admin()},
+ resetdemo:()=>{if(!confirm('Reset semua data demo di browser ini?'))return;localStorage.removeItem(KEY);S=fresh();save();toast('Data demo direset.');route()},
+ csv:()=>{const rows=[['Jenis','ID','Judul/Buku','Pihak','Model','Nominal','Status']];S.orders.forEach(o=>{const b=getBook(o.bookId);rows.push(['Order',o.id,b?b.title:'',S.user.nim,o.mode,o.total,o.status+' t'+o.stage])});S.listings.forEach(l=>rows.push(['Listing',l.id,l.title,l.owner.nim,'jual/sewa',l.buy||l.rent,l.status]));
+  const csv=rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(',')).join('\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv'}));a.download='laporan-nesspages.csv';a.click();toast('Laporan CSV diunduh.')}
+};
+const ON={
+ hsearch:(f,e)=>{e.preventDefault();const i=f.elements.q,q=i.value.trim();location.hash='#/katalog'+(q?'?q='+encodeURIComponent(q):'');i.value=''},
+ catq:(f,e)=>{e.preventDefault();cat.q=$('#cq').value.trim();cat.page=1;catUpdate()},
+ send:(f,e)=>{e.preventDefault();const i=$('#cmsg');sendChat(i.value);i.value=''},
+ login:(f,e)=>{e.preventDefault();const lk=+sessionStorage.getItem('np_lock')||0;if(Date.now()<lk){$('#aerr').textContent='Terlalu banyak percobaan. Coba lagi dalam '+Math.ceil((lk-Date.now())/1000)+' detik.';return}
+  const btn=$('#abtn');btn.disabled=true;btn.textContent='Memeriksa...';const pw=$('#apw').value;
+  setTimeout(()=>{if(derive(pw)===AUTH.hash){sessionStorage.setItem('np_admin','1');sessionStorage.removeItem('np_fail');toast('Selamat datang, Admin SIM.');V.admin()}else{const n=(+sessionStorage.getItem('np_fail')||0)+1;sessionStorage.setItem('np_fail',n);if(n>=5){sessionStorage.setItem('np_lock',Date.now()+30000);sessionStorage.setItem('np_fail',0)}btn.disabled=false;btn.textContent='Masuk Dashboard';$('#aerr').textContent='Sandi salah.'+(n>=5?' Akses dikunci 30 detik.':'');$('#apw').value=''}},30)},
+ tsubmit:(f,e)=>{e.preventDefault();const d=tform();const errs=[];
+  if(!d.mj&&!d.ms)errs.push('Pilih minimal satu model transaksi (jual atau sewa).');if(d.mj&&!(+d.buy>0))errs.push('Isi harga jual.');if(d.ms&&!(+d.rent>0))errs.push('Isi harga sewa.');if(d.photos.length<2)errs.push('Upload minimal 2 foto fisik buku.');if(!d.pa||d.pa.length<8)errs.push('Isi rekening atau e-wallet untuk pencairan dana.');if(!d.agree)errs.push('Centang pernyataan kejujuran kondisi buku.');
+  if(errs.length){toast(errs[0],1);return}
+  const l={id:'NP-2026-'+String(1000+Math.floor(Math.random()*9000)),title:d.title,author:d.author,fak:d.fak,matkul:d.matkul,isbn:d.isbn,cond:d.cond,note:d.note,owner:{name:S.user.name,nim:S.user.nim},buy:d.mj?+d.buy:0,rent:d.ms?+d.rent:0,cod:d.cod,payout:d.pb?d.pb+' •••• '+d.pa.slice(-4):'',photos:d.photos,status:'pending',at:now()};
+  S.listings.push(l);S.draft=null;save();toast('Penawaran terkirim. Menunggu review kurator (SLA maks 6 jam kerja).');ttab='listing';location.hash='#/toko?tab=listing'}
+};
+const CH={
+ catfak:el=>{cat.fak=el.value;cat.page=1;history.replaceState(null,'',cat.fak?'#/katalog/'+cat.fak:'#/katalog');route()},
+ cattx:el=>{cat.tx[el.value]=el.checked;cat.page=1;catUpdate()},
+ catcond:el=>{cat.cond=+el.value;cat.page=1;catUpdate()},
+ catsort:el=>{cat.sort=el.value;catUpdate()}
+};
+const IN={
+ catmax:el=>{cat.max=+el.value;$('#mxl').textContent='s.d. '+rp(cat.max);cat.page=1;catUpdate()},
+ notecnt:el=>{$('#nc').textContent=el.value.length+'/200 karakter'},
+ aq:el=>{aq=el.value;const pos=el.selectionStart;V.admin();const n=$('#aq');n.focus();n.setSelectionRange(pos,pos)},
+ tlive:()=>tlive(),idlive:()=>drawStp(idOk())
+};
+/* ===== v2: peran pembeli/penjual, toko, bantuan, privasi, admin lengkap ===== */
+const BANKS=['BNI','BRI','Mandiri','BCA','BSI','Permata','CIMB Niaga'];
+const PAYOPTS='<optgroup label="Instan"><option>QRIS Instan UNNES</option><option>E-Wallet (GoPay / OVO / DANA / ShopeePay)</option></optgroup><optgroup label="Virtual Account">'+BANKS.map(b=>`<option>Virtual Account ${b}</option>`).join('')+'</optgroup><optgroup label="Bayar di tempat"><option>COD (Bayar saat serah terima)</option></optgroup>';
+const ADMIN_WA='';
+let UM=false,ttab='ringkas',atop='dash',ftab='all';
+const stb=s=>{const m={approved:['bgg','Disetujui'],pending:['bga','Menunggu Review'],rejected:['bgr','Ditolak'],selesai:['bgg','Selesai'],aktif:['bgb','Berjalan'],batal:['bgr','Batal'],sengketa:['bga','Sengketa'],baru:['bga','Perlu Disiapkan'],siap:['bgb','Siap Serah Terima']}[s]||['','-'];return `<span class="bdg ${m[0]}">${m[1]}</span>`};
+const sbal=()=>Math.round(S.sellerOrders.filter(o=>o.st==='selesai').reduce((a,o)=>a+o.total,0)*.95)-S.payouts.reduce((a,x)=>a+x.amt,0);
+const kp=(t,v,x)=>`<div class="card"><small>${t}</small><b>${v}</b><span class="xs mut">${x}</span></div>`;
+const tbl=(h,rows,em)=>`<div class="card tw"><table class="t"><thead><tr>${h.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>${rows.length?rows.join(''):`<tr><td colspan="${h.length}" class="empty">${em||'Belum ada data.'}</td></tr>`}</tbody></table></div>`;
+
+/* ---- Toko Saya (mode penjual) ---- */
+V.toko=(p,q)=>{ttab=q.get('tab')||ttab;
+ const my=S.listings.filter(l=>l.owner&&l.owner.nim===S.user.nim),so=S.sellerOrders,open=so.filter(o=>o.st!=='selesai'),bal=sbal();
+ const tabs=[['ringkas','Ringkasan'],['listing','Listing Saya ('+my.length+')'],['masuk','Pesanan Masuk ('+open.length+')'],['saldo','Saldo & Pencairan']];
+ const body={
+  ringkas:`<div class="kpi">${kp('Listing Aktif',my.filter(l=>l.status==='approved').length,'Tayang di katalog')}${kp('Menunggu Review',my.filter(l=>l.status==='pending').length,'SLA maks 6 jam kerja')}${kp('Pesanan Perlu Diproses',open.length,'Siapkan buku dan titik COD')}${kp('Saldo Bisa Dicairkan',rp(bal),'Setelah biaya platform 5%')}</div><div class="card pad" style="margin-top:16px"><b>Langkah cepat</b><div class="row wr" style="margin-top:10px"><a class="btn bp" href="#/titip">+ Titip Buku Baru</a><a class="btn bo" href="#/toko?tab=masuk">Lihat Pesanan Masuk</a><a class="btn bg" href="#/bantuan">Bantuan Penjual</a></div></div>`,
+  listing:listingsTab(my),
+  masuk:tbl(['ID Order','Pembeli','Buku & Model','Titik & Jam COD','Total','Status','Aksi'],so.slice().reverse().map(o=>`<tr><td><code>${o.id}</code></td><td><b>${esc(o.buyer)}</b><div class="xs mut">${esc(o.nim)}</div></td><td>${esc(o.book)}<div class="xs mut">${o.mode==='sewa'?'Sewa':'Beli'} • ${esc(o.pay)}</div></td><td>${esc(o.cod)}<div class="xs mut">${esc(o.slot)}</div></td><td><b>${rp(o.total)}</b></td><td>${stb(o.st)}</td><td>${o.st==='baru'?`<button class="btn bp sm" data-act="soready" data-id="${o.id}">Buku Siap</button>`:o.st==='siap'?`<button class="btn bo sm" data-act="sodone" data-id="${o.id}">Input OTP</button>`:''}</td></tr>`),'Belum ada pesanan masuk.'),
+  saldo:`<div class="co two" style="grid-template-columns:1fr 1.2fr;align-items:start"><div class="card pad"><span class="eyb">Saldo penjual</span><b style="font-size:32px;display:block;margin:4px 0">${rp(bal)}</b><p class="xs mut">Dari penjualan selesai, sudah dikurangi biaya platform 5% dan pencairan sebelumnya.</p><label class="l" style="margin-top:12px">Cairkan ke</label><select class="sel" id="pbank">${BANKS.map(b=>`<option>${b}</option>`).join('')}<option>GoPay</option><option>OVO</option><option>DANA</option></select><input class="in" id="pacc" inputmode="numeric" maxlength="20" placeholder="Nomor rekening atau e-wallet" style="margin-top:8px"><button class="btn bp full" style="margin-top:10px" data-act="cairkan" ${bal>0?'':'disabled'}>Cairkan Saldo</button></div>${tbl(['ID','Tujuan','Nominal','Waktu'],S.payouts.slice().reverse().map(x=>`<tr><td><code>${x.id}</code></td><td>${esc(x.to)}</td><td><b>${rp(x.amt)}</b></td><td class="xs">${esc(x.at)}</td></tr>`),'Belum ada pencairan.')}</div>`}[ttab]||'';
+ app.innerHTML=`<div class="wrap" style="max-width:1100px"><div class="crumb"><a href="#/">Beranda</a> › <b>Toko Saya</b></div><div class="card pad row sb wr"><div class="row" style="gap:14px"><i class="av" style="width:56px;height:56px;font-size:18px;background:var(--mint2);color:var(--g2)">${initials(S.user.name)}</i><div><h1 style="font-size:26px;font-weight:800;letter-spacing:-.4px">Toko ${esc(S.user.name)}</h1><div class="sm mut">NIM ${esc(S.user.nim)} • <span class="bdg bgg">● SSO UNNES</span> • Mode Penjual</div></div></div><div class="row wr"><a class="btn bp" href="#/titip">+ Titip Buku</a><button class="btn bg" data-act="role" data-r="pembeli">Ganti ke Mode Pembeli</button></div></div><div class="tabs wr" style="margin:16px 0">${tabs.map(t=>`<button class="${ttab===t[0]?'on':''}" data-act="ttab" data-t="${t[0]}">${t[1]}</button>`).join('')}</div>${body}</div>`};
+
+/* ---- Pusat Bantuan & FAQ ---- */
+const FAQ=[
+['titip','Bagaimana cara titip jual buku?','Pindah ke mode Penjual lewat menu profil, buka Titip Jual, isi identitas buku, kondisi fisik, minimal 2 foto, lalu harga, titik COD, dan rekening pencairan. Setelah dikirim, kurator akan mengecek penawaranmu.'],
+['titip','Berapa lama proses kurasi?','Kurator memeriksa kelayakan fisik, kelengkapan silabus, dan identitas NIM dalam maksimal 6 jam kerja. Hasilnya tampil di Toko Saya.'],
+['titip','Berapa biaya platform untuk penjual?','Biaya platform 5% dari harga jual. Nilainya sudah dihitung otomatis di ringkasan draf sebelum penawaran dikirim.'],
+['titip','Buku apa yang boleh dititip?','Buku teks, modul praktikum, dan catatan ujian yang sesuai silabus UNNES. Buku bajakan atau fotokopi komersial tidak diterima.'],
+['sewa','Berapa lama masa sewa?','Satu semester atau sekitar 6 bulan sejak serah terima fisik, kecuali ada keterangan lain di halaman buku.'],
+['sewa','Apakah ada deposit dan kapan dikembalikan?','Jika buku memakai deposit, nilainya tertulis di halaman buku dan dikembalikan 100% setelah buku kembali sesuai kondisi awal.'],
+['sewa','Bagaimana jika buku terlambat dikembalikan?','Pengelola akan mengingatkan lewat WhatsApp. Keterlambatan berulang dapat membuat akses sewa dibatasi.'],
+['bayar','Metode pembayaran apa saja yang tersedia?','QRIS, e-wallet, Virtual Account (BNI, BRI, Mandiri, BCA, BSI, Permata, CIMB Niaga), serta COD yaitu bayar saat serah terima.'],
+['bayar','Bagaimana escrow bekerja?','Dana dari QRIS, e-wallet, atau Virtual Account ditahan di rekening penampung NessPages. Dana baru diteruskan ke penjual setelah kamu memasukkan OTP serah terima.'],
+['bayar','Kalau memilih COD, apakah dana lewat escrow?','Tidak. Pada COD kamu membayar langsung saat bertemu setelah mengecek buku. Pesanan tetap tercatat dan OTP tetap dipakai untuk konfirmasi.'],
+['bayar','Bagaimana kalau buku tidak sesuai deskripsi?','Jangan berikan OTP, tekan Laporkan Ketidaksesuaian Fisik, dan dana tetap ditahan sampai admin meninjau. Refund penuh jika terbukti tidak sesuai.'],
+['kurasi','Apa saja yang dicek kurator?','Kelengkapan halaman, kondisi jilid dan sampul, tingkat coretan, kesesuaian silabus, dan kecocokan identitas NIM SSO penitip.'],
+['kurasi','Bagaimana grade kondisi buku ditentukan?','Dari persentase kondisi yang diisi penjual dan dicek kurator. Mulai 95% disebut seperti baru, 90% sangat layak, dan 80% layak pakai.'],
+['akun','Apa bedanya mode Pembeli dan Penjual?','Mode Pembeli untuk membeli atau menyewa dan memantau Pesanan Saya. Mode Penjual untuk titip jual, Toko Saya, pesanan masuk, dan pencairan saldo. Ganti kapan saja dari menu profil.'],
+['akun','Di mana saja titik COD?','Titik resmi: '+COD.join(', ')+'.']];
+const FCAT=[['all','Semua Topik'],['titip','Cara Titip Buku'],['sewa','Sewa & Deposit'],['bayar','Bayar & Escrow'],['kurasi','Standar Kurasi'],['akun','Akun & Mode']];
+const botAns=t=>{const w=t.toLowerCase().split(/\W+/).filter(x=>x.length>3);let b=null,bs=0;FAQ.forEach(f=>{const n=w.filter(x=>(f[1]+' '+f[2]).toLowerCase().includes(x)).length;if(n>bs){bs=n;b=f}});return b?b[2]:'Maaf, NessBot belum menemukan jawabannya. Hubungi admin lewat tombol WhatsApp atau datang ke posko SIM ya.'};
+function drawFaq(){const e=$('#faqs');if(!e)return;e.innerHTML=FAQ.filter(f=>ftab==='all'||f[0]===ftab).map(f=>`<details><summary>${esc(f[1])}</summary><p>${esc(f[2])}</p></details>`).join('');$$('#fcat button').forEach(b=>b.classList.toggle('on',b.dataset.t===ftab))}
+function drawBot(){const m=$('#bot');if(!m)return;m.innerHTML=V._bot.map(x=>`<div class="bt ${x.w}">${esc(x.t)}</div>`).join('');m.scrollTop=m.scrollHeight}
+function botSend(t){t=t.trim();if(!t)return;V._bot.push({w:'me',t});drawBot();setTimeout(()=>{V._bot.push({w:'th',t:botAns(t)});drawBot()},500)}
+V.bantuan=()=>{V._bot=[{w:'th',t:'Halo '+S.user.name.split(' ')[0]+'! Ada yang bisa NessBot bantu hari ini? Pilih pertanyaan cepat atau ketik langsung.'}];
+ app.innerHTML=`<div class="wrap" style="max-width:1100px"><div class="crumb"><a href="#/">Beranda</a> › <b>Pusat Bantuan</b></div><div class="card pad" style="background:linear-gradient(120deg,#ecfdf5,#fff 70%)"><span class="bdg bgg">● NessBot aktif 24/7</span><h1 style="font-size:30px;font-weight:800;letter-spacing:-.6px;margin:8px 0 4px">Pusat Bantuan &amp; FAQ Mahasiswa UNNES</h1><p class="mut" style="max-width:620px">Temukan jawaban cepat seputar titip buku, sewa per semester, pembayaran, dan serah terima COD, atau tanya langsung ke NessBot.</p></div>
+ <div class="co two" style="margin-top:16px;grid-template-columns:1.2fr 1fr;align-items:start"><div><div class="tabs wr" id="fcat" style="margin-bottom:12px">${FCAT.map(c=>`<button data-act="faqcat" data-t="${c[0]}">${c[1]}</button>`).join('')}</div><div class="faq" id="faqs"></div><div class="card pad" style="margin-top:14px"><b>${ic('shield',16)} Kepatuhan Tata Kelola Privasi</b><p class="sm mut" style="margin-top:4px">Riwayat chat, NIM, dan mutasi transaksi dikelola sesuai UU No. 27 Tahun 2022. <a class="g b" href="#/privasi">Baca kebijakan privasi →</a></p></div></div>
+ <div style="display:grid;gap:14px"><div class="card" style="overflow:hidden"><div class="banner" style="border-radius:0">${ic('chat',22)}<div><b>NessBot</b><div class="xs" style="opacity:.9">Asisten otomatis • jawaban dari FAQ</div></div></div><div class="bot" id="bot"></div><div class="chips">${['Cara titip jual buku','Berapa lama masa sewa','Di mana titik COD','Kendala pesanan atau escrow'].map(t=>`<button data-act="botq" data-t="${t}">${t}</button>`).join('')}</div><form class="row" style="padding:0 12px 12px" data-on-submit="bot"><input class="in" id="botin" autocomplete="off" placeholder="Tanya hal lain pada NessBot..."><button class="btn bp">${ic('send',15)}</button></form></div>
+ <div class="card pad"><b>Belum menemukan solusi?</b><p class="sm mut" style="margin:4px 0 10px">Tim pengelola siap membantu kendala spesifik.</p><button class="btn bp full" data-act="adminwa">${ic('chat',15)} Chat Admin via WhatsApp</button><p class="xs mut" style="margin-top:10px">${ic('pin',13)} Posko Bantuan SIM Offline: Gedung PKM Lantai 2, UNNES. Senin sampai Jumat, 08.00 sampai 16.00 WIB.</p></div></div></div></div>`;drawFaq();drawBot()};
+
+/* ---- Kebijakan Privasi (draf prototipe) ---- */
+const PDP=[
+['Komitmen Kepatuhan UU PDP No. 27 Tahun 2022','NessPages berkomitmen memproses data pribadi mahasiswa UNNES sesuai UU No. 27 Tahun 2022 tentang Pelindungan Data Pribadi. Pengelola bertindak sebagai Pengendali Data Pribadi yang menjaga transparansi, keamanan, dan tujuan pemrosesan yang sah.',['Keabsahan & Kewajaran|Data diproses atas persetujuan dan hanya untuk keperluan sirkulasi buku.','Perlindungan Teknis|Enkripsi saat transit dan penyimpanan, akses berbasis peran.','Integritas & Kerahasiaan|Data tidak diperjualbelikan dan tidak dibagikan ke pihak ketiga komersial.']],
+['Prinsip Minimisasi Data Mahasiswa','Hanya data yang benar-benar dibutuhkan untuk menjalankan transaksi yang dikumpulkan.',['Identitas Akademik|Nama, NIM, dan status aktif dari SSO UNNES.','Kontak Transaksi|Nomor WhatsApp aktif untuk koordinasi COD.','Area Serah Terima|Titik COD yang dipilih saat pesanan.','Rekening Pencairan|Bank dan 4 digit akhir rekening penjual.']],
+['Alur Perlindungan dan Siklus Transaksi COD','Setiap transaksi punya jejak yang terlindungi dari pemesanan sampai serah terima.',['1. Pemesanan Terenkripsi|Pesanan dicatat dengan ID unik.','2. Escrow & Reservasi|Dana non-COD ditahan sampai serah terima.','3. Buku Dicek Fisik|Pembeli memeriksa buku di titik COD.','4. Serah Terima & Purge Log|OTP dikonfirmasi, dana diteruskan, log sensitif dihapus terjadwal.']],
+['Proteksi dan Masking Nomor WhatsApp','Nomor WhatsApp dipakai untuk koordinasi transaksi dan tidak ditampilkan sebagai informasi publik.',['Tampilan Publik|Nomor tidak muncul di katalog atau profil.','Saat Transaksi Aktif|Nomor dimasking (contoh 0812-****-7890) dan komunikasi lewat DM NessPages.','Setelah Selesai|Akses ke nomor lawan transaksi ditutup.']],
+['Batas Waktu Retensi dan Purge Log (nilai contoh)','Data disimpan selama diperlukan lalu dihapus terjadwal. Angka di bawah adalah contoh dan perlu disesuaikan dengan kebijakan resmi UNNES.',['Data Transaksi & Escrow|Contoh: 5 tahun untuk kebutuhan audit.','Chat DM Transaksi|Contoh: dihapus 90 hari setelah transaksi selesai.','Log Titik COD & OTP|Contoh: dihapus 30 hari setelah selesai.','Data Akun|Selama mahasiswa aktif atau sampai diminta dihapus.']],
+['Hak Subjek Data Mahasiswa UNNES','Sebagai subjek data pribadi, mahasiswa memiliki hak yang dapat diajukan melalui pengelola.',['Hak Akses & Perbaikan|Melihat dan memperbaiki data yang tersimpan.','Hak Penghapusan|Meminta data dihapus sepanjang tidak ada kewajiban menyimpannya.','Hak Menarik Persetujuan|Mencabut persetujuan pemrosesan data.','Hak Keberatan & Pembatasan|Mengajukan keberatan atau pembatasan pemrosesan.']],
+['Narahubung Data Protection Officer (DPO) Kampus','Jika ingin mengajukan hak atau melaporkan insiden data, hubungi petugas pelindungan data.',['Email (contoh)|pdp@nesspages.unnes.ac.id','Jam Layanan|Senin sampai Jumat, 08.00 sampai 16.00 WIB.','Posko|Gedung PKM Lantai 2, UNNES.']]];
+V.privasi=()=>{app.innerHTML=`<div class="wrap" style="max-width:1100px"><div class="crumb"><a href="#/">Beranda</a> › <b>Kebijakan Privasi</b></div><span class="bdg bgg">● Kepatuhan UU PDP No. 27 Tahun 2022</span><h1 style="font-size:30px;font-weight:800;letter-spacing:-.6px;margin:8px 0 4px">Transparansi, Kedaulatan &amp; Keamanan Data Mahasiswa</h1><p class="mut" style="max-width:700px">Draf prototipe. Nilai retensi dan kontak bersifat contoh dan perlu disesuaikan dengan ketentuan resmi UNNES sebelum dipakai publik.</p>
+ <div class="co two" style="margin-top:16px;grid-template-columns:240px 1fr;align-items:start"><div class="card pad toc" style="position:sticky;top:76px"><b class="sm">Daftar Regulasi PDP</b>${PDP.map((x,i)=>`<button data-act="pdpgo" data-i="${i}">${i+1}. ${esc(x[0].replace(/ \(.*/,''))}</button>`).join('')}</div><div style="display:grid;gap:14px">${PDP.map((x,i)=>`<div class="card pad pdp" id="pdp${i}"><span class="bdg bgg">BAGIAN ${String(i+1).padStart(2,'0')}</span><h2 style="font-size:20px;font-weight:800;margin:8px 0 6px">${i+1}. ${esc(x[0])}</h2><p class="mut">${esc(x[1])}</p><div class="fg g2" style="margin-top:12px">${x[2].map(t=>{const a=t.split('|');return `<div class="card pad" style="box-shadow:none;background:#f8fafc"><b class="sm">${esc(a[0])}</b><div class="xs mut" style="margin-top:3px">${esc(a[1])}</div></div>`}).join('')}</div></div>`).join('')}</div></div></div>`};
+
+/* ---- Pembayaran multi metode ---- */
+ACT.pay=()=>{const c=V._co;const idn=$('#idn').value.trim(),idm=$('#idm').value.trim();
+ if(!idOk()){$('#idnerr').textContent=idn.length<3?'Ketik nama lengkap kamu.':'';$('#idmerr').textContent=/^\d{10,12}$/.test(idm)?'':'NIM harus 10 sampai 12 digit angka.';if(!$('#ids').value||!$('#idf').value)toast('Pilih status akademik dan fakultas.',1);(idn.length<3?$('#idn'):$('#idm')).focus();return}
+ $('#idnerr').textContent='';$('#idmerr').textContent='';c.idn=idn;c.idm=idm;c.ids=$('#ids').value;c.idf=$('#idf').value;const wa=$('#wa').value.replace(/[\s-]/g,'');if(!/^(08|\+?628)\d{8,12}$/.test(wa)){$('#waerr').textContent='Masukkan nomor WhatsApp aktif yang valid (contoh 081234567890).';$('#wa').focus();return}$('#waerr').textContent='';
+ c.wa=wa;c.day=c.days[+$('#day').value];c.pay=$('#pay').value;c.note=$('#note').value.trim();const pr=price(c.b,c.mode,c.vc),cod=/^COD/.test(c.pay),va=/^Virtual/.test(c.pay);let mid,btn='Simulasikan Pembayaran Berhasil';
+ if(cod){btn='Konfirmasi Pesanan COD';mid=`<div class="info" style="text-align:left"><b>Bayar saat serah terima</b><p class="sm mut" style="margin-top:4px">Siapkan uang pas ${rp(pr.total)} dan bayar setelah buku kamu cek langsung. Pada COD dana tidak melewati escrow, tetapi pesanan dan OTP tetap dicatat.</p></div>`}
+ else if(va){const no='8808'+String(hashStr(c.b.id+c.pay)*7919+Date.now()%1e6).padStart(11,'0').slice(-11);mid=`<div class="info" style="text-align:left"><div class="xs mut b">${esc(c.pay.toUpperCase())}</div><b style="font-size:24px;letter-spacing:.08em">${no}</b><p class="xs mut" style="margin-top:4px">Transfer sesuai nominal lewat ATM, m-banking, atau internet banking. Berlaku 24 jam.</p></div>`}
+ else mid=qrSvg(c.b.id+Date.now(),190);
+ modal(`<div style="text-align:center"><h3 style="font-size:18px;font-weight:800">Pembayaran ${esc(c.pay)}</h3><p class="sm mut" style="margin:4px 0 14px">Ini simulasi, tidak ada uang sungguhan.</p>${mid}<div class="tot" style="margin-top:14px"><span class="b sm">Total Bayar</span><b>${rp(pr.total)}</b></div><div class="fg" style="margin-top:14px"><button class="btn bp full" data-act="paid">${btn}</button><button class="btn bg full" data-act="close">Batal</button></div></div>`)};
+
+/* ---- aksi baru ---- */
+Object.assign(ACT,{
+ umenu:()=>{UM=!UM;const e=$('.um');e&&e.classList.toggle('show',UM)},
+ role:el=>{S.role=el.dataset.r;save();UM=false;const h=S.role==='penjual'?'#/toko':'#/pesanan';toast('Beralih ke mode '+(S.role==='penjual'?'Penjual':'Pembeli')+'.');if(location.hash===h)route();else location.hash=h},
+ ttab:el=>{ttab=el.dataset.t;V.toko([],new URLSearchParams())},
+ dellist:el=>{if(!confirm('Tarik penawaran ini?'))return;S.listings=S.listings.filter(l=>l.id!==el.dataset.id);save();V.toko([],new URLSearchParams())},
+ soready:el=>{S.sellerOrders.find(x=>x.id===el.dataset.id).st='siap';save();toast('Pembeli diberi tahu. Datang ke titik COD sesuai jadwal.');V.toko([],new URLSearchParams());renderHdr()},
+ sodone:el=>{const o=S.sellerOrders.find(x=>x.id===el.dataset.id),v=prompt('Masukkan 4 digit OTP dari pembeli (demo: '+o.otp+')');if(v===null)return;if(v.trim()!==o.otp){toast('OTP tidak cocok.',1);return}o.st='selesai';save();toast('Serah terima selesai. Saldo bertambah.');V.toko([],new URLSearchParams());renderHdr()},
+ cairkan:()=>{const b=sbal(),acc=($('#pacc').value||'').replace(/\D/g,'');if(b<=0)return;if(acc.length<8){toast('Nomor rekening tidak valid.',1);return}S.payouts.push({id:'PO-'+(1000+Math.floor(Math.random()*9000)),amt:b,to:$('#pbank').value+' •••• '+acc.slice(-4),at:now()});save();toast('Pencairan '+rp(b)+' diproses.');V.toko([],new URLSearchParams())},
+ faqcat:el=>{ftab=el.dataset.t;drawFaq()},botq:el=>botSend(el.dataset.t),
+ adminwa:()=>{if(ADMIN_WA)window.open('https://wa.me/'+ADMIN_WA,'_blank');else toast('Nomor WhatsApp admin belum diisi (konstanta ADMIN_WA).',1)},
+ pdpgo:el=>{const e=$('#pdp'+el.dataset.i);e&&e.scrollIntoView({behavior:'smooth',block:'start'})},
+ atop:el=>{atop=el.dataset.t;V.admin()}});
+
+const idOk=()=>{const n=($('#idn')||{value:''}).value.trim(),m=($('#idm')||{value:''}).value.trim();return n.length>=3&&/^\d{10,12}$/.test(m)&&!!$('#ids').value&&!!$('#idf').value};
+function drawStp(ok){const e=$('#stp');if(!e)return;const st=(n,on,dn,t,sub)=>`<div class="stp ${dn?'dn':on?'on':''}"><span class="n">${dn?ic('check',13,3):n}</span><div><b>${t}</b><small>${sub}</small></div></div>`;
+ e.innerHTML=st(1,!ok,ok,'Langkah 1 • '+(ok?'Selesai':'Sekarang'),'Konfirmasi identitas pemesan')+st(2,ok,false,'Langkah 2 • '+(ok?'Sekarang':'Berikutnya'),'Titik COD &amp; pembayaran')+st(3,false,false,'Langkah 3 • Terakhir','Serah terima fisik di UNNES');
+ const b=$('#idb');if(b){b.className='bdg '+(ok?'bgg':'bga');b.textContent=ok?'Identitas terkonfirmasi':'Belum dikonfirmasi'}}
+const _pd=ACT.paid;ACT.paid=()=>{const c=V._co;_pd();const o=S.orders[S.orders.length-1];if(o){o.buyer=c.idn;o.bnim=c.idm;o.bst=c.ids;o.bfak=c.idf;save()}};
+ON.bot=(f,e)=>{e.preventDefault();const i=$('#botin');botSend(i.value);i.value=''};
+document.addEventListener('click',e=>{if(UM&&!e.target.closest('.um')){UM=false;const u=$('.um');u&&u.classList.remove('show')}});
+
+/* ---- Admin: tab rekap + panel tambahan ---- */
+const BUYERS=['Raka Pramudya','Alya Zahra','Bima Satria','Citra Dewi','Dika Ramadhan','Eka Putri','Farel Hidayat','Gita Lestari','Hana Safira','Ilham Maulana','Jihan Aulia','Kevin Saputra','Laila Nuraini','Mario Fernando','Nanda Prameswari','Oka Wijaya','Pradipta Arya','Qonita Ayu','Rafi Anggara','Sinta Maharani'];
+const PAYS=['QRIS Instan UNNES','Virtual Account BNI','Virtual Account BRI','Virtual Account Mandiri','Virtual Account BCA','Virtual Account BSI','Virtual Account Permata','E-Wallet (GoPay / OVO / DANA / ShopeePay)','COD (Bayar saat serah terima)','QRIS Instan UNNES'];
+/* satu buku maksimal satu transaksi, jadi terjual + tersewa tidak pernah melebihi jumlah buku di katalog */
+const SEED_X=BOOKS.map((b,i)=>{const h=HH(b.id);if(h%100>=62)return null;const m=b.buy&&b.rent?((h>>2)%3===0?'beli':'sewa'):b.buy?'beli':'sewa',r=(h>>7)%20;return{id:'NP-ORD-2026-'+(5000+i),buyer:BUYERS[(h>>5)%BUYERS.length],seller:b.seller.name,title:b.title,fak:b.fak,model:m,pay:PAYS[(h>>3)%PAYS.length],total:(m==='sewa'?b.rent:b.buy)+2000,cod:b.cod,st:r<14?'selesai':r<18?'aktif':'batal'}}).filter(Boolean);
+const allT=()=>BOOKS.map((b,i)=>({id:'NP-2026-'+String(100+i).padStart(4,'0'),name:b.seller.name,nim:b.seller.nim,fak:b.fak,title:b.title,model:b.buy&&b.rent?'Jual + Sewa':b.buy?'Jual':'Sewa',price:b.buy||b.rent,st:'approved',at:(1+HH(b.id)%28)+' Okt 2026'})).concat(S.listings.filter(l=>l.owner).map(l=>({id:l.id,name:l.owner.name,nim:l.owner.nim,fak:l.fak,title:l.title,model:l.buy&&l.rent?'Jual + Sewa':l.buy?'Jual':'Sewa',price:l.buy||l.rent,st:l.status,at:l.at})));
+const allX=()=>SEED_X.concat(S.orders.map(o=>{const b=getBook(o.bookId);return{id:o.id,buyer:o.buyer||S.user.name,seller:b?b.seller.name:'-',title:b?b.title:'-',fak:b?b.fak:'-',model:o.mode,pay:o.pay||'QRIS Instan UNNES',total:o.total,cod:o.cod,st:o.status}}));
+const cnt=(L,f)=>{const m={};L.forEach(x=>{const k=f(x);m[k]=(m[k]||0)+1});return Object.entries(m).sort((a,b)=>b[1]-a[1])};
+const okX=()=>allX().filter(x=>x.st!=='batal');
+const SHARES=()=>{const X=okX(),n=Math.max(1,X.length),L=[['#e11d48','Kedokteran (FK)'],['#f59e0b','Ekonomi & Bisnis (FEB)'],['#f97316','Teknik (FT)'],['#06b6d4','MIPA (FMIPA)'],['#8b5cf6','Lainnya (FH, FIPP, FISIP, FBS, FIK)']],c=[0,0,0,0,0];X.forEach(x=>c[{FK:0,FEB:1,FT:2,FMIPA:3}[x.fak]??4]++);return L.map((l,i)=>[l[0],l[1],Math.round(c[i]/n*100)+'%',c[i]/n*100])};
+const CONIC=()=>{let a=0;return 'conic-gradient('+SHARES().map(x=>{const s0=a;a+=x[3];return x[0]+' '+s0.toFixed(1)+'% '+a.toFixed(1)+'%'}).join(',')+')'};
+const TOP2=()=>{const X=okX(),t=cnt(X,x=>x.fak).slice(0,2);return{n:t.map(x=>x[0]).join(' & ')+' UNNES',p:Math.round(t.reduce((a,x)=>a+x[1],0)/Math.max(1,X.length)*100)}};
+const CODFAV=()=>{const X=okX();return cnt(X,x=>x.cod).slice(0,3).map(x=>[x[0],Math.round(x[1]/Math.max(1,X.length)*100)+'%'])};
+const bars=(r,c)=>{const mx=Math.max(1,...r.map(x=>x[1]));return r.map(x=>`<div class="br2"><div class="tp"><span>${esc(x[0])}</span><span>${x[1]} transaksi</span></div><div class="tr"><i style="width:${x[1]/mx*100}%;background:${c}"></i></div></div>`).join('')};
+const _adm=V.admin;
+V.admin=()=>{_adm();if(!isAdmin())return;const w=$('#app .wrap');if(!w)return;
+ const X=allX(),T=allT(),ok=X.filter(x=>x.st!=='batal'),sold=ok.filter(x=>x.model==='beli').length,rent=ok.filter(x=>x.model==='sewa').length,nil=ok.reduce((a,x)=>a+x.total,0);
+ const bar=`<div class="tabs wr" style="margin-top:16px">${[['dash','Dashboard SIM'],['titip','Rekap Titip Jual ('+T.length+')'],['trx','Rekap Sewa & Beli ('+X.length+')']].map(t=>`<button class="${atop===t[0]?'on':''}" data-act="atop" data-t="${t[0]}">${t[1]}</button>`).join('')}</div>`;
+ const chip=(a,b)=>`<span class="card pad sm" style="padding:10px 14px"><b>${b}</b> ${a}</span>`;
+ if(atop==='titip'){[...w.children].forEach((c,i)=>{if(i>0)c.remove()});
+  w.insertAdjacentHTML('beforeend',bar+`<div class="row wr" style="margin:14px 0">${chip('Total penitip',new Set(T.map(x=>x.nim)).size)}${chip('Total listing',T.length)}${chip('Disetujui',T.filter(x=>x.st==='approved').length)}${chip('Menunggu',T.filter(x=>x.st==='pending').length)}${chip('Ditolak',T.filter(x=>x.st==='rejected').length)}<button class="btn bp sm" data-act="csv">${ic('dl',14)} Unduh CSV</button></div>`+tbl(['ID','Penitip','Fakultas','Judul Buku','Model','Harga','Status','Tanggal'],T.slice().reverse().map(x=>`<tr><td><code>${esc(x.id)}</code></td><td><b>${esc(x.name)}</b><div class="xs mut">${esc(x.nim)}</div></td><td>${esc(x.fak)}</td><td>${esc(x.title)}</td><td>${esc(x.model)}</td><td><b>${rp(x.price)}</b></td><td>${stb(x.st)}</td><td class="xs">${esc(x.at)}</td></tr>`)));return}
+ if(atop==='trx'){[...w.children].forEach((c,i)=>{if(i>0)c.remove()});
+  w.insertAdjacentHTML('beforeend',bar+`<div class="row wr" style="margin:14px 0">${chip('Total transaksi',X.length)}${chip('Nilai transaksi',rp(nil))}${chip('Buku terjual',sold)}${chip('Buku tersewa',rent)}${chip('Berjalan',X.filter(x=>x.st==='aktif').length)}${chip('Batal',X.filter(x=>x.st==='batal').length)}<button class="btn bp sm" data-act="csv">${ic('dl',14)} Unduh CSV</button></div>`+tbl(['ID Order','Pembeli','Penjual','Buku','Model','Pembayaran','Total','Titik COD','Status'],X.slice().reverse().map(x=>`<tr><td><code>${esc(x.id)}</code></td><td>${esc(x.buyer)}</td><td>${esc(x.seller)}</td><td>${esc(x.title)}</td><td>${x.model==='sewa'?'Sewa':'Beli'}</td><td>${esc(x.pay)}</td><td><b>${rp(x.total)}</b></td><td class="xs">${esc(x.cod)}</td><td>${stb(x.st)}</td></tr>`)));return}
+ w.children[0].insertAdjacentHTML('afterend',bar);
+ w.insertAdjacentHTML('beforeend',`<div class="kpi" style="margin-top:16px">${kp('Buku Terjual',sold,'dari '+allBooks().length+' judul di katalog')}${kp('Buku Tersewa',rent,'Tersedia '+(allBooks().length-sold-rent)+' judul')}${kp('Penitip Aktif',new Set(T.map(x=>x.nim)).size,T.length+' listing masuk')}${kp('Nilai Transaksi',rp(nil),'Tidak termasuk batal')}</div><div class="co two" style="margin-top:16px;grid-template-columns:1fr 1fr"><div class="card pad bars"><span class="eyb">Rekap dari data transaksi</span><h3 style="font-size:17px;font-weight:800;margin:4px 0 14px">Titik COD Paling Favorit</h3>${bars(cnt(ok,x=>x.cod).slice(0,5),'#0b7a4b')}</div><div class="card pad bars"><span class="eyb">Rekap dari data transaksi</span><h3 style="font-size:17px;font-weight:800;margin:4px 0 14px">Metode Pembayaran</h3>${bars(cnt(ok,x=>x.pay.replace(/ \(.*/,'')).slice(0,6),'#f59e0b')}</div></div>`)};
+
+document.addEventListener('click',e=>{const el=e.target.closest('[data-act]');if(!el)return;const f=ACT[el.dataset.act];if(f)f(el,e)});
+document.addEventListener('submit',e=>{const el=e.target.closest('[data-on-submit]');if(el&&ON[el.dataset.onSubmit])ON[el.dataset.onSubmit](el,e)});
+document.addEventListener('change',e=>{const el=e.target.closest('[data-on-change]');if(el&&CH[el.dataset.onChange])CH[el.dataset.onChange](el,e);
+ if(e.target.id==='ph'){const files=[...e.target.files].slice(0,4-TJ.photos.length);Promise.all(files.map(compress)).then(r=>{r.filter(Boolean).forEach(s=>TJ.photos.push(s));drawPhotos();tlive()});e.target.value=''}});
+document.addEventListener('input',e=>{const el=e.target.closest('[data-on-input]');if(el&&IN[el.dataset.onInput])IN[el.dataset.onInput](el,e)});
+/* form titip: handler input dipasang di <form>, event 'input' dari child naik ke form */
+route();
+})();
+</script>
+</body>
+</html>
